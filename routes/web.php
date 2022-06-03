@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     AuthController,
-    DashboardController
+    DashboardController,
+    WelcomeController
 };
 
 Route::get('/', [AuthController::class, 'login'])->name('auth.index');
@@ -13,6 +14,7 @@ Route::get('/signup', [AuthController::class, 'signup'])->name('auth.signup');
 Route::post('/register', [AuthController::class, 'register'])->name('auth.register');
 Route::get('logout', [AuthController::class, 'logout'])->name('auth.logout');
 Route::get('forgot-password', [AuthController::class, 'forgotPassword'])->name('auth.forgot-password');
+Route::get('welcome', [WelcomeController::class, 'index'])->name('dashboard.index');
 
 Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => ['auth']], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('index');

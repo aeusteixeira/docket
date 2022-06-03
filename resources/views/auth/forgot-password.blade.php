@@ -50,6 +50,8 @@
                     <a href="{{ route('auth.login') }}" class="text-primary">
                         <i class="fas fa-arrow-left"></i>
                         Voltar
+                    </a>
+                </span>
               </form>
           </div>
         </div>

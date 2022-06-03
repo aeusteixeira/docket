@@ -75,6 +75,7 @@
                         <a href="{{ route('auth.forgot-password') }}" class="fs-5">
                             <span>Esqueceu sua senha?</span>
                         </a>
+                    </div>
 
                 </div>
               </div>
