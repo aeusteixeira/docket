@@ -1,4 +1,8 @@
 @include('layouts.dashboard.includes.head')
+<body class="bg-light">
+    <div id="db-wrapper">
+        <!-- navbar vertical -->
+        <!-- Sidebar -->
  <nav class="navbar-vertical navbar">
     <div class="nav-scroller">
         <!-- Brand logo -->
@@ -391,6 +395,5 @@
       </div>
     </div>
   </div>
-  <!-- Scripts -->
-  <!-- Libs JS -->
+
   @include('layouts.dashboard.includes.footer')

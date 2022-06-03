@@ -1,24 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Favicon icon-->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('dashboard/images/favicon/favicon.ico') }} ">
-
-    <!-- Libs CSS -->
-
-    <link href="{{ asset('dashboard/dashboard/libs/bootstrap-icons/font/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('dashboard/libs/dropzone/dist/dropzone.css') }}" rel="stylesheet">
-    <link href="{{ asset('dashboard/libs/@mdi/font/css/materialdesignicons.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('dashboard/libs/prismjs/themes/prism-okaidia.css') }}" rel="stylesheet">
-
-    <!-- Theme CSS -->
-    <link rel="stylesheet" href="{{ asset('dashboard/css/theme.min.css') }}">
-    <title>Homepage | Dash Ui - Bootstrap 5 Admin Dashboard Template</title>
-</head>
+@include('layouts.dashboard.includes.head')
 
 <body class="bg-light">
     <div id="db-wrapper">
@@ -342,45 +322,25 @@
 
 
                                     <div class="lh-1 ">
-                                        <h5 class="mb-1"> John E. Grainger</h5>
-                                        <a href="#" class="text-inherit fs-6">View my profile</a>
+                                        <h5 class="mb-1">
+                                            USER_NAME
+                                        </h5>
                                     </div>
                                     <div class=" dropdown-divider mt-3 mb-2"></div>
                                 </div>
 
                                 <ul class="list-unstyled">
-
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="me-2 icon-xxs dropdown-item-icon" data-feather="user"></i>Edit
-                                            Profile
-                                        </a>
-                                    </li>
                                     <li>
                                         <a class="dropdown-item" href="#">
                                             <i class="me-2 icon-xxs dropdown-item-icon"
-                                                data-feather="activity"></i>Activity Log
-                                        </a>
-
-
-                                    </li>
-
-                                    <li>
-                                        <a class="dropdown-item text-primary" href="#">
-                                            <i class="me-2 icon-xxs text-primary dropdown-item-icon"
-                                                data-feather="star"></i>Go Pro
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="me-2 icon-xxs dropdown-item-icon"
-                                                data-feather="settings"></i>Account Settings
+                                                data-feather="settings"></i>
+                                                Configuações
                                         </a>
                                     </li>
                                     <li>
                                         <a class="dropdown-item" href="./index.html">
-                                            <i class="me-2 icon-xxs dropdown-item-icon" data-feather="power"></i>Sign
-                                            Out
+                                            <i class="me-2 icon-xxs dropdown-item-icon" data-feather="power"></i>
+                                            Sair
                                         </a>
                                     </li>
                                 </ul>
@@ -393,20 +353,7 @@
             @yield('content')
         </div>
     </div>
-    <!-- Scripts -->
-    <!-- Libs JS -->
-    <script src="{{ asset('dashboard/libs/jquery/dist/jquery.min.js') }}"></script>
-    <script src="{{ asset('dashboard/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('dashboard/libs/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
-    <script src="{{ asset('dashboard/libs/feather-icons/dist/feather.min.js') }}"></script>
-    <script src="{{ asset('dashboard/libs/prismjs/prism.js') }}"></script>
-    <script src="{{ asset('dashboard/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
-    <script src="{{ asset('dashboard/libs/dropzone/dist/min/dropzone.min.js') }}"></script>
-    <script src="{{ asset('dashboard/libs/prismjs/plugins/toolbar/prism-toolbar.min.js') }}"></script>
-    <script src="{{ asset('dashboard/libs/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js') }}"></script>
-
-    <!-- Theme JS -->
-    <script src="{{ asset('dashboard/js/theme.min.js') }}"></script>
+    @include('layouts.dashboard.includes.footer')
 </body>
 </html>
 
