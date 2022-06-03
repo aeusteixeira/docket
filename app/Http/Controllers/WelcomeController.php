@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WelcomeController extends Controller
 {
@@ -15,8 +16,6 @@ class WelcomeController extends Controller
 
     public function configure(Request $request)
     {
-
-
         Auth::login($user);
 
         return redirect()->route('dashboard.index');
