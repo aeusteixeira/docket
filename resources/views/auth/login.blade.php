@@ -18,7 +18,7 @@
           <!-- Card body -->
           <div class="card-body p-6">
             <div class="mb-4">
-                <a href="../index.html" class="mb-2 docket">
+                <a href="/" class="mb-2 docket">
                     {{ env('APP_NAME') }}
                 </a>
               <p class="mb-6">
@@ -31,12 +31,13 @@
               </p>
             </div>
             <!-- Form -->
-            <form>
+            <form method="POST" action="{{ route('auth.authenticate') }}">
+                @csrf
+                <x-alert />
               <!-- Username -->
               <div class="mb-3">
                 <label for="email" class="form-label">E-mail</label>
-                <input type="email" id="email" class="form-control" name="email"
-                placeholder="Digite seu e-mail" required>
+                <input type="email" id="email" class="form-control" name="email" placeholder="Digite seu e-mail" required>
               </div>
               <!-- Password -->
               <div class="mb-3">
@@ -61,22 +62,20 @@
 
               </div>
               <div>
-                <!-- Button -->
-                <div class="d-grid">
-                  <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-sign-in-alt"></i>
-                    <span>Entrar</span>
-                  </button>
-                </div>
+            <!-- Button -->
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary">
+                <i class="fas fa-sign-in-alt"></i>
+                <span>Entrar</span>
+                </button>
+            </div>
 
                 <div class="d-md-flex justify-content-between mt-4">
-
                     <div class="mb-2 mb-md-0">
                         <a href="{{ route('auth.forgot-password') }}" class="fs-5">
                             <span>Esqueceu sua senha?</span>
                         </a>
                     </div>
-
                 </div>
               </div>
             </form>

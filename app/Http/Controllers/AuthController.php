@@ -17,12 +17,13 @@ class AuthController extends Controller
     public function authenticate(Request $request)
     {
         $credentials = $request->only('email', 'password');
-
         if (Auth::attempt($credentials)) {
             return redirect()->route('dashboard.index');
         }
 
-        return redirect()->route('main.login');
+        return redirect()->route('auth.login')
+        ->with('message', 'E-mail ou senha inválidos')
+        ->with('type', 'danger');
     }
 
     public function logout()
