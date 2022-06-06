@@ -1,5 +1,18 @@
 @extends('layouts.dashboard.app', ['title' => 'Dashboard'])
+@push('styles')
+    <style>
+        .card-hover:hover{
+            cursor: pointer !important;
+            background-color: #f6f6f6 !important;
+            transition: all .3s ease-in-out;
+        }
 
+        .card-hover:not(:hover){
+            background-color: #fff !important;
+            transition: all .3s ease-in-out;
+        }
+    </style>
+@endpush
 @section('content')
                 <!-- Container fluid -->
                 <div class="bg-primary pt-10 pb-21"></div>
@@ -11,13 +24,74 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="mb-2 mb-lg-0">
                                         <h3 class="mb-0  text-white">
-                                            Olá, Matheus!
+                                            Olá, {{ Auth::user()->name }}
                                         </h3>
                                     </div>
                                     <div>
-                                        <a href="#" class="btn btn-white">
-                                            Criar
-                                        </a>
+                                        <button type="button" class="btn btn-light " data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                                            Meu docket
+                                          </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-12 mt-3 mb-5">
+                                                                <h2 class="text-center">
+                                                                    Gerencie o seu portal do Teams
+                                                                </h2>
+                                                            </div>
+                                                            <div class="col-md-6 mb-4">
+                                                                <a href="" class="text-decoration-none">
+                                                                    <div class="card card-hover shadow p-5">
+                                                                        <div class="card-body text-center">
+                                                                            <h3 class="m-0">
+                                                                                Gerenciar usuário
+                                                                            </h3>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                            <div class="col-md-6 mb-4">
+                                                                <a href="" class="text-decoration-none">
+                                                                    <div class="card card-hover shadow p-5">
+                                                                        <div class="card-body text-center">
+                                                                            <h3 class="m-0">
+                                                                                Gerenciar menus
+                                                                            </h3>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                            <div class="col-md-6 mb-4">
+                                                                <a href="" class="text-decoration-none">
+                                                                    <div class="card card-hover shadow p-5">
+                                                                        <div class="card-body text-center">
+                                                                            <h3 class="m-0">
+                                                                                Gerenciar notícias
+                                                                            </h3>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                            <div class="col-md-6 mb-4">
+                                                                <a href="" class="text-decoration-none">
+                                                                    <div class="card card-hover shadow p-5">
+                                                                        <div class="card-body text-center">
+                                                                            <h3 class="m-0">
+                                                                                Gerenciar banners
+                                                                            </h3>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
