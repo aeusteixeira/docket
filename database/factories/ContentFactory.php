@@ -23,8 +23,8 @@ class ContentFactory extends Factory
             'slug' => $this->faker->slug,
             'content' => $this->faker->paragraph,
             'image' => $this->faker->imageUrl,
-            'type_id' => Type::factory(),
-            'call_to_action_id' => CallToAction::factory(),
+            'type_id' => random_int(1, Type::count()),
+            'call_to_action_id' => random_int(1, CallToAction::count()),
         ];
     }
 }

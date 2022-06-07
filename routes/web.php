@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     AuthController,
+    ContentController,
     DashboardController,
+    UserController,
     WelcomeController
 };
 
@@ -18,4 +20,6 @@ Route::get('welcome', [WelcomeController::class, 'index'])->name('dashboard.inde
 
 Route::group(['prefix' => 'app', 'as' => 'dashboard.', 'middleware' => ['auth']], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('index');
+    Route::resource('contents', ContentController::class);
+    Route::resource('users', UserController::class);
 });

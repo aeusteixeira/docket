@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Content;
 use App\Http\Requests\StoreContentRequest;
 use App\Http\Requests\UpdateContentRequest;
+use App\Models\CallToAction;
+use App\Models\Type;
+use Illuminate\Support\Facades\Storage;
 
 class ContentController extends Controller
 {
@@ -15,7 +18,10 @@ class ContentController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.contents.index', [
+            'title' => 'Conteúdos',
+            'contents' => Content::paginate(10),
+        ]);
     }
 
     /**
@@ -25,7 +31,11 @@ class ContentController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.contents.create', [
+            'title' => 'Novo Conteúdo',
+            'types' => Type::all(),
+            'call_to_actions' => CallToAction::all(),
+        ]);
     }
 
     /**
@@ -36,7 +46,11 @@ class ContentController extends Controller
      */
     public function store(StoreContentRequest $request)
     {
-        //
+        $request = $request->all();
+        $request['image'] = Storage::disk('public')->put('images', $request['image']);
+        $content = Content::create($request);
+
+        return redirect()->route('dashboard.contents.index')->with('message', 'Conteúdo criado com sucesso!')->with('type', 'success');
     }
 
     /**
@@ -58,7 +72,12 @@ class ContentController extends Controller
      */
     public function edit(Content $content)
     {
-        //
+        return view('dashboard.contents.edit', [
+            'title' => $content->name . ' - Editar',
+            'content' => $content,
+            'types' => Type::all(),
+            'call_to_actions' => CallToAction::all(),
+        ]);
     }
 
     /**
@@ -70,7 +89,15 @@ class ContentController extends Controller
      */
     public function update(UpdateContentRequest $request, Content $content)
     {
-        //
+        $request = $request->all();
+        if(key_exists('image', $request)) {
+            $request['image'] = Storage::disk('public')->put('images', $request['image']);
+            Storage::disk('public')->delete($content->image);
+        }
+
+        $content->update($request);
+
+        return redirect()->route('dashboard.contents.index')->with('message', 'Conteúdo atualizado com sucesso!')->with('type', 'success');
     }
 
     /**
@@ -81,6 +108,11 @@ class ContentController extends Controller
      */
     public function destroy(Content $content)
     {
-        //
+        Storage::disk('public')->delete($content->image);
+        Content::destroy($content->id);
+
+        return redirect()->route('dashboard.contents.index')
+        ->with('message', 'Conteúdo excluido com sucesso!')
+        ->with('type', 'success');
     }
 }

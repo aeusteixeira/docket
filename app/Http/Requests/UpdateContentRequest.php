@@ -13,7 +13,7 @@ class UpdateContentRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class UpdateContentRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+            'type_id' => 'required|integer|exists:types,id',
+            'call_to_action_id' => 'required|integer|exists:call_to_actions,id',
+            'content' => 'required|string',
         ];
     }
 }

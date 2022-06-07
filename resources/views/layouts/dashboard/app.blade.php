@@ -8,13 +8,17 @@
         <nav class="navbar-vertical navbar">
             <div class="nav-scroller">
                 <!-- Brand logo -->
-                <a class="navbar-brand" href="./index.html">
-                    <img src="{{ asset('dashboard/images/brand/logo/logo.svg') }}" alt="" />
+                <a class="navbar-brand" href="{{ route('dashboard.index') }}">
+                    <h3>
+                        <span class="text-primary docket">
+                            {{ config('app.name') }}
+                        </span>
+                    </h3>
                 </a>
                 <!-- Navbar nav -->
                 <ul class="navbar-nav flex-column" id="sideNavbar">
                     <li class="nav-item">
-                        <a class="nav-link has-arrow  active " href="./index.html">
+                        <a class="nav-link has-arrow  active " href="{{ route('dashboard.index') }}">
                             <i data-feather="home" class="nav-icon icon-xs me-2"></i> Dashboard
                         </a>
 
@@ -338,7 +342,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="./index.html">
+                                        <a class="dropdown-item" href="{{ route('auth.logout') }}">
                                             <i class="me-2 icon-xxs dropdown-item-icon" data-feather="power"></i>
                                             Sair
                                         </a>

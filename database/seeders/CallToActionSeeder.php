@@ -16,7 +16,28 @@ class CallToActionSeeder extends Seeder
     public function run()
     {
         CallToAction::factory()->create([
-            'name' => 'Quero ser um voluntário',
+            'name' => '',
         ]);
+
+        CallToAction::factory()->create([
+            'name' => 'Saiba mais',
+        ]);
+
+        CallToAction::factory()->create([
+            'name' => 'Acessar',
+        ]);
+
+        CallToAction::factory()->create([
+            'name' => 'Continuar lendo',
+        ]);
+
+        CallToAction::factory()->create([
+            'name' => 'Entrar',
+        ]);
+
+        CallToAction::factory()->create([
+            'name' => 'Acessar',
+        ]);
+
     }
 }

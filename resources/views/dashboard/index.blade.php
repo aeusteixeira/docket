@@ -40,7 +40,7 @@
                                                         <div class="row">
                                                             <div class="col-12 mt-3 mb-5">
                                                                 <h2 class="text-center">
-                                                                    Gerencie o seu portal do Teams
+                                                                    O que você deseja fazer?
                                                                 </h2>
                                                             </div>
                                                             <div class="col-md-6 mb-4">
@@ -48,7 +48,7 @@
                                                                     <div class="card card-hover shadow p-5">
                                                                         <div class="card-body text-center">
                                                                             <h3 class="m-0">
-                                                                                Gerenciar usuário
+                                                                                Publicar comunicado
                                                                             </h3>
                                                                         </div>
                                                                     </div>
@@ -59,29 +59,18 @@
                                                                     <div class="card card-hover shadow p-5">
                                                                         <div class="card-body text-center">
                                                                             <h3 class="m-0">
-                                                                                Gerenciar menus
+                                                                                Publicar notícia
                                                                             </h3>
                                                                         </div>
                                                                     </div>
                                                                 </a>
                                                             </div>
-                                                            <div class="col-md-6 mb-4">
+                                                            <div class="col-md-12 mb-4">
                                                                 <a href="" class="text-decoration-none">
                                                                     <div class="card card-hover shadow p-5">
                                                                         <div class="card-body text-center">
                                                                             <h3 class="m-0">
-                                                                                Gerenciar notícias
-                                                                            </h3>
-                                                                        </div>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-6 mb-4">
-                                                                <a href="" class="text-decoration-none">
-                                                                    <div class="card card-hover shadow p-5">
-                                                                        <div class="card-body text-center">
-                                                                            <h3 class="m-0">
-                                                                                Gerenciar banners
+                                                                                Publicar banner
                                                                             </h3>
                                                                         </div>
                                                                     </div>

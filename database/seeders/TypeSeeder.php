@@ -15,9 +15,22 @@ class TypeSeeder extends Seeder
      */
     public function run()
     {
-        Type::factory()->create([
-            'name' => 'Voluntário',
-            'slug' => 'voluntario',
+        Type::create([
+            'name' => 'Banner',
+            'slug' => 'banner',
+            'color' => '#0099ff',
+        ]);
+
+        Type::create([
+            'name' => 'Card',
+            'slug' => 'card',
+            'color' => '#000b76',
+        ]);
+
+        Type::create([
+            'name' => 'Comunicado',
+            'slug' => 'comunicado',
+            'color' => '#e7008a',
         ]);
     }
 }
