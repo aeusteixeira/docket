@@ -5,11 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CallToAction extends Model
+class Section extends Model
 {
     use HasFactory;
     protected $fillable = [
         'name',
-        'color',
+        'slug',
+        'icon',
     ];
+
+    public function contents()
+    {
+        return $this->hasMany(Content::class);
+    }
 }

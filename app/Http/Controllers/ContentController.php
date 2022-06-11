@@ -6,6 +6,7 @@ use App\Models\Content;
 use App\Http\Requests\StoreContentRequest;
 use App\Http\Requests\UpdateContentRequest;
 use App\Models\CallToAction;
+use App\Models\Section;
 use App\Models\Type;
 use Illuminate\Support\Facades\Storage;
 
@@ -33,8 +34,6 @@ class ContentController extends Controller
     {
         return view('dashboard.contents.create', [
             'title' => 'Novo Conteúdo',
-            'types' => Type::all(),
-            'call_to_actions' => CallToAction::all(),
         ]);
     }
 
@@ -50,7 +49,9 @@ class ContentController extends Controller
         $request['image'] = Storage::disk('public')->put('images', $request['image']);
         $content = Content::create($request);
 
-        return redirect()->route('dashboard.contents.index')->with('message', 'Conteúdo criado com sucesso!')->with('type', 'success');
+        return redirect()->route('dashboard.contents.index')
+        ->with('message', 'Conteúdo criado com sucesso!')
+        ->with('type', 'success');
     }
 
     /**
@@ -91,8 +92,8 @@ class ContentController extends Controller
     {
         $request = $request->all();
         if(key_exists('image', $request)) {
+            $file = Storage::disk('public')->delete($content->image);
             $request['image'] = Storage::disk('public')->put('images', $request['image']);
-            Storage::disk('public')->delete($content->image);
         }
 
         $content->update($request);

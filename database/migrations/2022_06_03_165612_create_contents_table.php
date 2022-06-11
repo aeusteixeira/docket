@@ -19,10 +19,14 @@ return new class extends Migration
             $table->string('slug');
             $table->text('content');
             $table->string('image')->nullable();
+            $table->string('action')->nullable();
             $table->unsignedBigInteger('type_id')->nullable();
             $table->unsignedBigInteger('call_to_action_id')->nullable();
+            $table->unsignedBigInteger('section_id')->nullable();
+
             $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');
             $table->foreign('call_to_action_id')->references('id')->on('call_to_actions')->onDelete('cascade');
+            $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
             $table->timestamps();
         });
     }

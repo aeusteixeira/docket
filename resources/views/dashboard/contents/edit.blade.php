@@ -73,7 +73,12 @@
                                 Imagem de destaque atual
                             </div>
                             <div class="card-body text-center">
-                                <img src="{{ $content->image }}" alt="{{ $content->name }}" class="img-fluid">
+                                @if ($content->image)
+                                    <img src="{{ $content->image }}" alt="{{ $content->name }}" class="img-fluid">
+                                @else
+                                    <p>Nenhuma imagem selecionada</p>
+                                @endif
+
                             </div>
                         </div>
                     </div>

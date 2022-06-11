@@ -15,11 +15,6 @@ class TypeSeeder extends Seeder
      */
     public function run()
     {
-        Type::create([
-            'name' => 'Banner',
-            'slug' => 'banner',
-            'color' => '#0099ff',
-        ]);
 
         Type::create([
             'name' => 'Card',
@@ -28,8 +23,14 @@ class TypeSeeder extends Seeder
         ]);
 
         Type::create([
-            'name' => 'Comunicado',
-            'slug' => 'comunicado',
+            'name' => 'Banner',
+            'slug' => 'banner',
+            'color' => '#0099ff',
+        ]);
+
+        Type::create([
+            'name' => 'Pop-up',
+            'slug' => 'pop-up',
             'color' => '#e7008a',
         ]);
     }

@@ -29,6 +29,7 @@
     </style>
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{ asset('dashboard/css/theme.min.css') }}">
+    @livewireStyles
     @stack('styles')
     <title>
         {{ $title . ' - ' . 'BPO Innova' ?? env('APP_NAME') }}

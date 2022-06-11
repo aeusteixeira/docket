@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\CallToAction;
+use App\Models\Section;
 use App\Models\Type;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -25,6 +26,8 @@ class ContentFactory extends Factory
             'image' => $this->faker->imageUrl,
             'type_id' => random_int(1, Type::count()),
             'call_to_action_id' => random_int(1, CallToAction::count()),
+            'section_id' => random_int(1, Section::count()),
+            'action' => $this->faker->url(),
         ];
     }
 }

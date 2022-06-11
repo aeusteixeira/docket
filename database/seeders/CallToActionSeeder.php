@@ -15,28 +15,30 @@ class CallToActionSeeder extends Seeder
      */
     public function run()
     {
-        CallToAction::factory()->create([
-            'name' => '',
-        ]);
 
         CallToAction::factory()->create([
             'name' => 'Saiba mais',
+            'color' => '#0099ff',
         ]);
 
         CallToAction::factory()->create([
             'name' => 'Acessar',
+            'color' => '#000b76',
         ]);
 
         CallToAction::factory()->create([
             'name' => 'Continuar lendo',
+            'color' => '#e7008a',
         ]);
 
         CallToAction::factory()->create([
             'name' => 'Entrar',
+            'color' => '#000b76',
         ]);
 
         CallToAction::factory()->create([
             'name' => 'Acessar',
+            'color' => '#e7008a',
         ]);
 
     }

@@ -29,7 +29,7 @@
         <div class="card shadow">
             <!-- table  -->
             <div class="table-responsive">
-                <table class="table shadow text-nowrap mb-0 table-hover table-striped">
+                <table class="table shadow text-nowrap mb-0 table-hover table-striped table-borderless">
                     <thead class="table-light">
                         <tr>
                             <th scope="col">#</th>
@@ -38,6 +38,9 @@
                             </th>
                             <th>
                                 Tipo
+                            </th>
+                            <th>
+                                Seção
                             </th>
                             <th>
                                 Publicado em:
@@ -64,6 +67,14 @@
                                         {{ $content->type->name }}
                                     </span>
                                 </td>
+                                <td>
+                                    <span class="badge bg-secondary">
+                                        @if (!empty($content->section))
+                                            {{ $content->section->name }}
+                                        @else
+                                            Sem seção
+                                        @endif
+                                    </span>
                                 <td>
                                     {{ $content->created_at->format('d/m/Y') }}
                                 </td>

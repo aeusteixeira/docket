@@ -19,6 +19,7 @@ class Content extends Model
         'image',
         'type_id',
         'call_to_action_id',
+        'action',
     ];
 
     public function type()
@@ -29,6 +30,11 @@ class Content extends Model
     public function callToAction()
     {
         return $this->belongsTo(CallToAction::class);
+    }
+
+    public function section()
+    {
+        return $this->belongsTo(Section::class);
     }
 
     protected function setNameAttribute($value)
