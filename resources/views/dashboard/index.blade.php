@@ -130,9 +130,20 @@
                                                 Sem seção
                                             @endif
                                         </span>
-                                    <td>
-                                        <x-actions-buttons :id="$content->id" :route="route('dashboard.contents.destroy', $content->id)" :name="$content->name" :type="$content->type->name" :color="$content->type->color" :icon="'trash-alt'" :method="'DELETE'"></x-actions-buttons>
-                                    </td>
+                                        <td>
+                                            <x-actions-buttons :content="$content" :actions="[
+                                                [
+                                                    'url' => route('dashboard.contents.edit', $content->id),
+                                                    'type' => 'primary', 'label' => 'Editar',
+                                                    'icon' => 'fas fa-edit'
+                                                ],
+                                                [
+                                                    'url' => route('dashboard.contents.destroy', $content->id),
+                                                    'type' => 'danger', 'label' => 'Excluir',
+                                                    'icon' => 'fas fa-trash-alt'
+                                                ]
+                                            ]" />
+                                        </td>
                                 </tr>
                             @endforeach
                             </tbody>

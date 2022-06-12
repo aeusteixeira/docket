@@ -15,7 +15,10 @@ class GroupController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.groups.index', [
+            'title' => 'Grupos',
+            'groups' => Group::paginate(10),
+        ]);
     }
 
     /**
@@ -25,7 +28,9 @@ class GroupController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.groups.create', [
+            'title' => 'Novo Grupo',
+        ]);
     }
 
     /**
@@ -36,7 +41,11 @@ class GroupController extends Controller
      */
     public function store(StoreGroupRequest $request)
     {
-        //
+        Group::create($request->all());
+
+        return redirect()->route('dashboard.groups.index')
+            ->with('message', 'Grupo criado com sucesso!')
+            ->with('type', 'success');
     }
 
     /**
@@ -58,7 +67,10 @@ class GroupController extends Controller
      */
     public function edit(Group $group)
     {
-        //
+        return view('dashboard.groups.edit', [
+            'title' => $group->name . ' - Editar',
+            'group' => $group,
+        ]);
     }
 
     /**
@@ -70,7 +82,11 @@ class GroupController extends Controller
      */
     public function update(UpdateGroupRequest $request, Group $group)
     {
-        //
+        $group->update($request->all());
+
+        return redirect()->route('dashboard.groups.index')
+            ->with('message', 'Grupo atualizado com sucesso!')
+            ->with('type', 'success');
     }
 
     /**
@@ -81,6 +97,10 @@ class GroupController extends Controller
      */
     public function destroy(Group $group)
     {
-        //
+        $group->delete();
+
+        return redirect()->route('dashboard.groups.index')
+            ->with('message', 'Grupo excluído com sucesso!')
+            ->with('type', 'success');
     }
 }

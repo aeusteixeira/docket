@@ -103,19 +103,19 @@
                         <div id="navUsers" class="collapse " data-bs-parent="#sideNavbar">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link " href="./pages/sign-in.html">
+                                    <a class="nav-link " href="{{ route('dashboard.users.create') }}">
                                         <i data-feather="plus-circle" class="nav-icon icon-xs me-2">
                                         </i> Criar novo
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link  " href="./pages/sign-up.html">
+                                    <a class="nav-link  " href="{{ route('dashboard.users.index') }}">
                                         <i data-feather="list" class="nav-icon icon-xs me-2">
                                         </i> Visualizar todos
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link " href="./pages/sign-in.html">
+                                    <a class="nav-link " href="{{ route('dashboard.users.import') }}">
                                         <i data-feather="file-plus" class="nav-icon icon-xs me-2">
                                         </i> Importar
                                     </a>
@@ -134,13 +134,13 @@
                         <div id="navDepartaments" class="collapse " data-bs-parent="#sideNavbar">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link " href="./pages/sign-in.html">
+                                    <a class="nav-link " href="{{ route('dashboard.groups.create') }}">
                                         <i data-feather="plus-circle" class="nav-icon icon-xs me-2">
                                         </i> Criar novo
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link  " href="./pages/sign-up.html">
+                                    <a class="nav-link  " href="{{ route('dashboard.groups.index') }}">
                                         <i data-feather="list" class="nav-icon icon-xs me-2">
                                         </i> Visualizar todos
                                     </a>
@@ -156,7 +156,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="./pages/layout.html">
+                        <a class="nav-link " href="{{ route('dashboard.settings') }}">
                             <i data-feather="settings" class="nav-icon icon-xs me-2">
                             </i>
                             Configurações

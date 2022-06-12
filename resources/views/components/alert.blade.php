@@ -1,7 +1,7 @@
 @if (session()->has('message'))
     <div>
         <div class="alert alert-{{ session('type') }}">
-            {{ session('message') }}
+            {!! session('message') !!}
         </div>
     </div>
 @endif

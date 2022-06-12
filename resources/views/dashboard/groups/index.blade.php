@@ -17,7 +17,7 @@
               <h3 class="mb-0 fw-bold">
                   {{ $title }}
               </h3>
-              <a href="{{ route('dashboard.contents.create') }}" class="btn btn-primary btn-sm rounded mt-3">
+              <a href="{{ route('dashboard.groups.create') }}" class="btn btn-primary btn-sm rounded mt-3">
                   <i class="fa fa-plus"></i>
                   Criar novo conteúdo
                 </a>
@@ -37,56 +37,31 @@
                                 Nome
                             </th>
                             <th>
-                                Tipo
-                            </th>
-                            <th>
-                                Seção
-                            </th>
-                            <th>
-                                Publicado em:
-                            </th>
-                            <th>
                                 Ações
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($contents as $content)
+                        @foreach ($groups as $group)
                             <tr>
                                 <th scope="row px-0">
-                                    {{ $content->id }}
+                                    {{ $group->id }}
                                 </th>
 
                                 <td>
-                                    <a href="{{ route('dashboard.contents.edit', $content->id) }}">
-                                        <i class="fas fa-file-alt"></i> {{ $content->name }}
+                                    <a href="{{ route('dashboard.groups.edit', $group->id) }}">
+                                        <i class="fas fa-file-alt"></i> {{ $group->name }}
                                     </a>
                                 </td>
                                 <td>
-                                    <span class="badge" style="background-color: {{ $content->type->color }}">
-                                        {{ $content->type->name }}
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="badge bg-secondary">
-                                        @if (!empty($content->section))
-                                            {{ $content->section->name }}
-                                        @else
-                                            Sem seção
-                                        @endif
-                                    </span>
-                                <td>
-                                    {{ $content->created_at->format('d/m/Y') }}
-                                </td>
-                                <td>
-                                    <x-actions-buttons :content="$content" :actions="[
+                                    <x-actions-buttons :content="$group" :actions="[
                                         [
-                                            'url' => route('dashboard.contents.edit', $content->id),
+                                            'url' => route('dashboard.groups.edit', $group->id),
                                             'type' => 'primary', 'label' => 'Editar',
                                             'icon' => 'fas fa-edit'
                                         ],
                                         [
-                                            'url' => route('dashboard.contents.destroy', $content->id),
+                                            'url' => route('dashboard.groups.destroy', $group->id),
                                             'type' => 'danger', 'label' => 'Excluir',
                                             'icon' => 'fas fa-trash-alt'
                                         ]
@@ -99,7 +74,7 @@
             </div>
             <!-- card footer  -->
             <div class="card-footer bg-white text-center">
-                {{ $contents->links() }}
+                {{ $groups->links() }}
             </div>
         </div>
       </div>

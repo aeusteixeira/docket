@@ -5,6 +5,7 @@ use App\Http\Controllers\{
     AuthController,
     ContentController,
     DashboardController,
+    GroupController,
     UserController,
     WelcomeController
 };
@@ -22,4 +23,7 @@ Route::group(['prefix' => 'app', 'as' => 'dashboard.', 'middleware' => ['auth']]
     Route::get('/', [DashboardController::class, 'index'])->name('index');
     Route::resource('contents', ContentController::class);
     Route::resource('users', UserController::class);
+    Route::get('users/import', [UserController::class, 'import'])->name('users.import');
+    Route::resource('groups', GroupController::class);
+    Route::get('/settings', [DashboardController::class, 'settings'])->name('settings');
 });

@@ -4,21 +4,17 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class ActionsButtons extends Component
+class ErrorInput extends Component
 {
-
-    public $content;
-    public $actions = [];
-
+    public $message;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($content, $actions = [])
+    public function __construct($message)
     {
-        $this->content = $content;
-        $this->actions = $actions;
+        $this->message = $message;
     }
 
     /**
@@ -28,6 +24,6 @@ class ActionsButtons extends Component
      */
     public function render()
     {
-        return view('components.actions-buttons');
+        return view('components.error-input');
     }
 }
