@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 
 class UserController extends Controller
 {
@@ -13,7 +16,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.users.index', [
+            'title' => 'Usuários',
+            'users' => User::paginate(10),
+        ]);
     }
 
     /**
@@ -23,7 +29,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.users.create', [
+            'title' => 'Criar usuário',
+        ]);
     }
 
     /**
@@ -51,12 +59,15 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('dashboard.users.edit', [
+            'title' => $user->name  . ' - Editar usuário',
+            'user' => $user,
+        ]);
     }
 
     /**

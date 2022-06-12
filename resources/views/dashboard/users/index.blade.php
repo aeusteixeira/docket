@@ -11,21 +11,33 @@
 <div class="container-fluid p-6">
     <x-alert />
     <div class="row">
-        <div class="col-lg-12 col-md-12 col-12">
-            <!-- Page header -->
-              <div class="border-bottom pb-4 mb-4 ">
+      <div class="col-lg-12 col-md-12 col-12">
+        <!-- Page header -->
+          <div class="border-bottom pb-4 mb-4 ">
 
-                    <x-header-buttons :context="$title" :actions="[
-                        [
-                            'url' => route('dashboard.contents.create'),
-                            'type' => 'success',
-                            'icon' => 'fa fa-plus',
-                            'label' => 'Criar'
-                        ]
-                    ]" />
+                <x-header-buttons :context="$title" :actions="[
+                    [
+                        'label' => 'Voltar',
+                        'url' => route('dashboard.users.index'),
+                        'type' => 'secondary',
+                        'icon' => 'fas fa-arrow-left'
+                    ],
+                    [
+                        'url' => route('dashboard.users.create'),
+                        'type' => 'success',
+                        'icon' => 'fa fa-plus',
+                        'label' => 'Novo Usuário'
+                    ],
+                    [
+                        'url' => route('dashboard.users.import'),
+                        'type' => 'primary',
+                        'icon' => 'fa fa-upload',
+                        'label' => 'Importar Usuários'
+                    ]
+                ]" />
 
-            </div>
-          </div>
+        </div>
+      </div>
     </div>
     <div class="row align-items-center">
       <div class="col-xl-12 col-lg-12 col-md-12 col-12">
@@ -40,13 +52,10 @@
                                 Nome
                             </th>
                             <th>
-                                Tipo
+                                Email
                             </th>
                             <th>
-                                Seção
-                            </th>
-                            <th>
-                                Publicado em:
+                                Grupo
                             </th>
                             <th>
                                 Ações
@@ -54,42 +63,36 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($contents as $content)
+                        @foreach ($users as $user)
                             <tr>
                                 <th scope="row px-0">
-                                    {{ $content->id }}
+                                    {{ $user->id }}
                                 </th>
 
                                 <td>
-                                    <a href="{{ route('dashboard.contents.edit', $content->id) }}">
-                                        <i class="fas fa-file-alt"></i> {{ $content->name }}
+                                    <a href="{{ route('dashboard.users.edit', $user->id) }}">
+                                        <strong>
+                                            <i class="fas fa-file-alt"></i> {{ $user->name }}
+                                        </strong>
                                     </a>
                                 </td>
                                 <td>
-                                    <span class="badge" style="background-color: {{ $content->type->color }}">
-                                        {{ $content->type->name }}
-                                    </span>
+                                    {{ $user->email }}
                                 </td>
                                 <td>
-                                    <span class="badge bg-secondary">
-                                        @if (!empty($content->section))
-                                            {{ $content->section->name }}
-                                        @else
-                                            Sem seção
-                                        @endif
-                                    </span>
-                                <td>
-                                    {{ $content->created_at->format('d/m/Y') }}
+                                    <a href="{{ route('dashboard.groups.edit', $user->group_id) }}">
+                                        {{ $user->group->name }}
+                                    </a>
                                 </td>
                                 <td>
-                                    <x-actions-buttons :content="$content" :actions="[
+                                    <x-actions-buttons :content="$user" :actions="[
                                         [
-                                            'url' => route('dashboard.contents.edit', $content->id),
+                                            'url' => route('dashboard.users.edit', $user->id),
                                             'type' => 'primary', 'label' => 'Editar',
                                             'icon' => 'fas fa-edit'
                                         ],
                                         [
-                                            'url' => route('dashboard.contents.destroy', $content->id),
+                                            'url' => route('dashboard.users.destroy', $user->id),
                                             'type' => 'danger', 'label' => 'Excluir',
                                             'icon' => 'fas fa-trash-alt'
                                         ]
@@ -102,7 +105,7 @@
             </div>
             <!-- card footer  -->
             <div class="card-footer bg-white text-center">
-                {{ $contents->links() }}
+                {{ $users->links() }}
             </div>
         </div>
       </div>

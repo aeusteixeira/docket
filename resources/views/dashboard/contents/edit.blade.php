@@ -14,14 +14,21 @@
 @section('content')
 <div class="container-fluid p-6">
     <div class="row">
-      <div class="col-lg-12 col-md-12 col-12">
-        <!-- Page header -->
-          <div class="border-bottom pb-4 mb-4 ">
-              <h3 class="mb-0 fw-bold">
-                  {{ $title }}
-              </h3>
+        <div class="col-lg-12 col-md-12 col-12">
+            <!-- Page header -->
+              <div class="border-bottom pb-4 mb-4 ">
+
+                    <x-header-buttons :context="$title" :actions="[
+                        [
+                            'label' => 'Voltar',
+                            'url' => route('dashboard.contents.index'),
+                            'type' => 'secondary',
+                            'icon' => 'fas fa-arrow-left'
+                        ]
+                    ]" />
+
+            </div>
         </div>
-      </div>
     </div>
     <div class="row align-items-center">
       <div class="col-xl-12 col-lg-12 col-md-12 col-12">

@@ -11,18 +11,21 @@
 <div class="container-fluid p-6">
     <x-alert />
     <div class="row">
-      <div class="col-lg-12 col-md-12 col-12">
-        <!-- Page header -->
-          <div class="border-bottom pb-4 mb-4 ">
-              <h3 class="mb-0 fw-bold">
-                  {{ $title }}
-              </h3>
-              <a href="{{ route('dashboard.groups.create') }}" class="btn btn-primary btn-sm rounded mt-3">
-                  <i class="fa fa-plus"></i>
-                  Criar novo conteúdo
-                </a>
-        </div>
-      </div>
+        <div class="col-lg-12 col-md-12 col-12">
+            <!-- Page header -->
+              <div class="border-bottom pb-4 mb-4 ">
+
+                    <x-header-buttons :context="$title" :actions="[
+                        [
+                            'url' => route('dashboard.groups.create'),
+                            'type' => 'success',
+                            'icon' => 'fa fa-plus',
+                            'label' => 'Novo Grupo'
+                        ]
+                    ]" />
+
+            </div>
+          </div>
     </div>
     <div class="row align-items-center">
       <div class="col-xl-12 col-lg-12 col-md-12 col-12">

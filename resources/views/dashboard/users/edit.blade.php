@@ -27,7 +27,7 @@
                     <x-header-buttons :context="$title" :actions="[
                         [
                             'label' => 'Voltar',
-                            'url' => route('dashboard.contents.index'),
+                            'url' => route('dashboard.users.index'),
                             'type' => 'secondary',
                             'icon' => 'fas fa-arrow-left'
                         ]
@@ -36,6 +36,6 @@
             </div>
         </div>
     </div>
-    @livewire('dashboard.contents.create')
+    @livewire('dashboard.users.edit', ['user' => $user])
   </div>
 @endsection
