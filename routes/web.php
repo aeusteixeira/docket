@@ -7,7 +7,7 @@ use App\Http\Controllers\{
     DashboardController,
     GroupController,
     UserController,
-    WelcomeController
+    GeneratorTeamsAppController
 };
 
 Route::get('/', [AuthController::class, 'login'])->name('auth.index');
@@ -17,8 +17,12 @@ Route::get('/signup', [AuthController::class, 'signup'])->name('auth.signup');
 Route::post('/register', [AuthController::class, 'register'])->name('auth.register');
 Route::get('logout', [AuthController::class, 'logout'])->name('auth.logout');
 Route::get('forgot-password', [AuthController::class, 'forgotPassword'])->name('auth.forgot-password');
-Route::get('welcome', [WelcomeController::class, 'index'])->name('dashboard.index');
 
+// Rotas de configuração do usuário e geração do app
+Route::get('first-access', [AuthController::class, 'firstAccess'])->name('auth.first-access');
+Route::post('first-access', [AuthController::class, 'firstAccessGenerate'])->name('auth.first-access-generate');
+Route::get('first-access/configure', [AuthController::class, 'configure'])->name('auth.configure');
+Route::post('first-access/configure', [AuthController::class, 'configureSave'])->name('auth.configure-save');
 Route::group(['prefix' => 'app', 'as' => 'dashboard.', 'middleware' => ['auth']], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('index');
     Route::resource('contents', ContentController::class);
@@ -27,3 +31,5 @@ Route::group(['prefix' => 'app', 'as' => 'dashboard.', 'middleware' => ['auth']]
     Route::resource('groups', GroupController::class);
     Route::get('/settings', [DashboardController::class, 'settings'])->name('settings');
 });
+
+Route::get('teste', [GeneratorTeamsAppController::class, 'generate'])->name('teste');

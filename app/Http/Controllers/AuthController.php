@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreConfigureRequest;
+use App\Http\Requests\StoreFirstAcessRequest;
+use App\Models\Configuration;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class AuthController extends Controller
 {
@@ -60,5 +65,71 @@ class AuthController extends Controller
         $user->sendPasswordResetNotification($user->getResetPasswordToken());
 
         return redirect()->route('auth.forgot-password');
+    }
+
+    public function firstAccess()
+    {
+        return view('auth.first-access', [
+            'title' => 'Primeiro acesso'
+        ]);
+    }
+
+    public function firstAccessGenerate(StoreFirstAcessRequest $request)
+    {
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+            'is_admin' => true,
+        ]);
+
+        $setting = [
+            'company_name' => $request->company_name,
+            'company_website' => $request->company_website,
+            'app_key' => Str::uuid(),
+        ];
+
+        $this->saveConfiguration($setting);
+
+        Auth::login($user);
+
+        return redirect()->route('auth.configure');
+    }
+
+    public function configure()
+    {
+        return view('auth.configure', [
+            'title' => 'Configuração',
+            'user' => Auth::user(),
+            'company' => Configuration::where('key', 'company_name')->first(),
+            'company_website' => Configuration::where('key', 'company_website')->first(),
+        ]);
+    }
+
+    public function configureSave(StoreConfigureRequest $request)
+    {
+        $settings = [
+            'short_name' => $request->short_name,
+            'full_name' => $request->full_name,
+            'short_description' => $request->short_description,
+            'full_description' => $request->full_description,
+            'privacy_policy' => $request->privacy_policy,
+            'terms_and_conditions' => $request->terms_and_conditions,
+            'image' => Storage::putFileAs('public/app', $request->image, 'color.png'),
+        ];
+
+        $this->saveConfiguration($settings);
+        $teamsApp = new GeneratorTeamsAppController();
+        $teamsApp->generate();
+        return redirect()->route('dashboard.index');
+    }
+
+    public function saveConfiguration($data = []){
+        foreach ($data as $key => $value) {
+            Configuration::create([
+                'key' => $key,
+                'value' => $value,
+            ]);
+        }
     }
 }
