@@ -23,6 +23,8 @@ Route::get('first-access', [AuthController::class, 'firstAccess'])->name('auth.f
 Route::post('first-access', [AuthController::class, 'firstAccessGenerate'])->name('auth.first-access-generate');
 Route::get('first-access/configure', [AuthController::class, 'configure'])->name('auth.configure');
 Route::post('first-access/configure', [AuthController::class, 'configureSave'])->name('auth.configure-save');
+Route::get('first-access/generate-teams-app', [GeneratorTeamsAppController::class, 'generate'])->name('auth.generate-teams-app');
+
 Route::group(['prefix' => 'app', 'as' => 'dashboard.', 'middleware' => ['auth']], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('index');
     Route::resource('contents', ContentController::class);

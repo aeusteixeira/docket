@@ -15,6 +15,10 @@ class AuthController extends Controller
 {
     public function login()
     {
+        if(empty(Configuration::all()->first())){
+            return redirect()->route('auth.first-access');
+        }
+
         if (Auth::check()) {
             return redirect()->route('dashboard.index');
         }
@@ -121,7 +125,7 @@ class AuthController extends Controller
         $this->saveConfiguration($settings);
         $teamsApp = new GeneratorTeamsAppController();
         if($teamsApp->generate()) {
-            return redirect()->route('dashboard.index');
+            return redirect()->route('dashboard.index')->with('first_access', true);
         }
     }
 
