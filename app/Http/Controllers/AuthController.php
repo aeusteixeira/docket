@@ -120,8 +120,9 @@ class AuthController extends Controller
 
         $this->saveConfiguration($settings);
         $teamsApp = new GeneratorTeamsAppController();
-        $teamsApp->generate();
-        return redirect()->route('dashboard.index');
+        if($teamsApp->generate()) {
+            return redirect()->route('dashboard.index');
+        }
     }
 
     public function saveConfiguration($data = []){

@@ -82,7 +82,7 @@
                     <label class="form-label" for="company_website">
                         Site
                     </label>
-                    <input type="text" class="form-control" placeholder="Site" name="company_website" value="{{ old('company_website') }}" required>
+                    <input type="url" class="form-control" placeholder="Site" name="company_website" value="{{ old('company_website') }}" required>
                     @error('company_website')
                         <x-error-input :message="$message"/>
                     @enderror

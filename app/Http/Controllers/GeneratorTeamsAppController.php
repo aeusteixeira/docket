@@ -126,6 +126,9 @@ class GeneratorTeamsAppController extends Controller
 
     public function addOulineImageOnAppFolder()
     {
-        return Storage::copy('public/outline.png', 'public/storage/app/outline.png');
+        // Copia a imagem para o diretorio app
+        $image = public_path('outline.png');
+        $destinationPath = public_path('storage/app/outline.png');
+        return copy($image, $destinationPath);
     }
 }
