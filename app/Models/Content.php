@@ -43,8 +43,4 @@ class Content extends Model
         $this->attributes['slug'] = Str::slug($value);
     }
 
-    protected function getImageAttribute($value)
-    {
-        return Storage::url($value);
-    }
 }

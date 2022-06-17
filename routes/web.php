@@ -25,6 +25,9 @@ Route::get('first-access/configure', [AuthController::class, 'configure'])->name
 Route::post('first-access/configure', [AuthController::class, 'configureSave'])->name('auth.configure-save');
 Route::get('first-access/generate-teams-app', [GeneratorTeamsAppController::class, 'generate'])->name('auth.generate-teams-app');
 
+// Rota publica para acesso ao app
+Route::get('/app/{app_key}', [GeneratorTeamsAppController::class, 'index'])->name('app.index');
+
 Route::group(['prefix' => 'app', 'as' => 'dashboard.', 'middleware' => ['auth']], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('index');
     Route::resource('contents', ContentController::class);
@@ -32,6 +35,7 @@ Route::group(['prefix' => 'app', 'as' => 'dashboard.', 'middleware' => ['auth']]
     Route::get('users/import', [UserController::class, 'import'])->name('users.import');
     Route::resource('groups', GroupController::class);
     Route::get('/settings', [DashboardController::class, 'settings'])->name('settings');
+    Route::get('/download-teams-app', [GeneratorTeamsAppController::class, 'downloadZipFile'])->name('download-teams-app');
 });
 
 Route::get('teste', [GeneratorTeamsAppController::class, 'generate'])->name('teste');

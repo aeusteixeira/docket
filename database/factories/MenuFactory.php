@@ -18,8 +18,9 @@ class MenuFactory extends Factory
     {
         return [
             'name' => $this->faker->sentence,
-            'slug' => $this->faker->url,
+            'action' => $this->faker->url,
             'icon' => $this->faker->word,
+            'color' => $this->faker->hexColor,
             'order' => $this->faker->numberBetween(1, 10),
             'parent_id' => 1,
             'is_active' => $this->faker->boolean,

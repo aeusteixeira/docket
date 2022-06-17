@@ -1,367 +1,161 @@
-@extends('layouts.dashboard.app', ['title' => 'Dashboard'])
+<!DOCTYPE html>
+<html lang="pt-br">
 
-@section('content')
-                <!-- Container fluid -->
-                <div class="bg-primary pt-10 pb-21"></div>
-                <div class="container-fluid mt-n22 px-6">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-12">
-                            <!-- Page header -->
-                            <div>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="mb-2 mb-lg-0">
-                                        <h3 class="mb-0  text-white">
-                                            Olá, Matheus!
-                                        </h3>
-                                    </div>
-                                    <div>
-                                        <a href="#" class="btn btn-white">
-                                            Criar
-                                        </a>
-                                    </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ $full_description }}">
+    <meta name="robots" content="noindex">
+    <meta name="revisit-after" content="1 day">
+    <meta name="language" content="Portuguese">
+    <meta http-equiv="refresh" content="240">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <style>
+            .card:hover {
+                box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                transition: 0.3s;
+            }
+
+            .card:not(:hover) {
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+                transition: 0.3s;
+            }
+
+            .card, .card-img-top, .carousel-inner {
+                border-radius: 10px;
+            }
+        </style>
+    <title>
+        {{ $company_name }} - Docket
+    </title>
+</head>
+
+<body class="pt-5 bg-light">
+    <main class="container">
+        <section id="main">
+            <div class="row">
+                <div class="mb-3 col-sm-12 col-md-12">
+                    <!-- With Control -->
+                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            @forelse ($banners as $banner)
+                                <div class="carousel-item active">
+                                    <img src="{{ $banner->image }}" class="d-block w-100 h-25" alt="{{ $banner->name }}">
                                 </div>
-                            </div>
+                            @empty
+                                <div class="carousel-item active">
+                                    <img src="https://via.placeholder.com/1920x1080" class="d-block w-100" alt="">
+                                </div>
+                            @endforelse
                         </div>
-                    </div>
-                    <!-- row  -->
-                    <div class="row mt-6">
-                        <div class="col-md-12 col-12">
-                            <!-- card  -->
-                            <div class="card">
-                                <!-- card header  -->
-                                <div class="card-header bg-white  py-4">
-                                    <h4 class="mb-0">Active Projects</h4>
-                                </div>
-                                <!-- table  -->
-                                <div class="table-responsive">
-                                    <table class="table text-nowrap mb-0">
-                                        <thead class="table-light">
-                                            <tr>
-                                                <th>Project name</th>
-                                                <th>Hours</th>
-                                                <th>priority</th>
-                                                <th>Members</th>
-                                                <th>Progress</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="align-middle">
-                                                    <div class="d-flex
-                                align-items-center">
-                                                        <div>
-                                                            <div class="icon-shape icon-md border p-4
-                                    rounded-1">
-                                                                <img src="{{ asset('dashboard/images/brand/dropbox-logo.svg') }}" alt="">
-                                                            </div>
-                                                        </div>
-                                                        <div class="ms-3 lh-1">
-                                                            <h5 class=" mb-1"> <a href="#" class="text-inherit">Dropbox
-                                                                    Design
-                                                                    System</a></h5>
-
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="align-middle">34</td>
-                                                <td class="align-middle"><span class="badge
-                                bg-warning">Medium</span></td>
-                                                <td class="align-middle">
-                                                    <div class="avatar-group">
-                                                        <span class="avatar avatar-sm">
-                                                            <img alt="avatar" src="{{ asset('dashboard/images/avatar/avatar-1.jpg') }}"
-                                                                class="rounded-circle">
-                                                        </span>
-                                                        <span class="avatar avatar-sm">
-                                                            <img alt="avatar" src="{{ asset('dashboard/images/avatar/avatar-2.jpg') }}"
-                                                                class="rounded-circle">
-                                                        </span>
-                                                        <span class="avatar avatar-sm">
-                                                            <img alt="avatar" src="{{ asset('dashboard/images/avatar/avatar-3.jpg') }}"
-                                                                class="rounded-circle">
-                                                        </span>
-                                                        <span class="avatar avatar-sm avatar-primary">
-                                                            <span class="avatar-initials rounded-circle
-                                    fs-6">+5</span>
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td class="align-middle text-dark">
-                                                    <div class="float-start me-3">15%</div>
-                                                    <div class="mt-2">
-                                                        <div class="progress" style="height: 5px;">
-                                                            <div class="progress-bar" role="progressbar" style="width:15%"
-                                                                aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="align-middle">
-                                                    <div class="d-flex
-                                align-items-center">
-                                                        <div>
-                                                            <div class="icon-shape icon-md border p-4
-                                    rounded-1">
-                                                                <img src="{{ asset('dashboard/images/brand/slack-logo.svg') }}" alt="">
-                                                            </div>
-                                                        </div>
-                                                        <div class="ms-3 lh-1">
-                                                            <h5 class=" mb-1"> <a href="#" class="text-inherit">Slack Team
-                                                                    UI Design</a></h5>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="align-middle">47</td>
-                                                <td class="align-middle"><span class="badge
-                                bg-danger">High</span></td>
-                                                <td class="align-middle">
-                                                    <div class="avatar-group">
-                                                        <span class="avatar avatar-sm">
-                                                            <img alt="avatar" src="{{ asset('dashboard/images/avatar/avatar-4.jpg') }}"
-                                                                class="rounded-circle">
-                                                        </span>
-                                                        <span class="avatar avatar-sm">
-                                                            <img alt="avatar" src="{{ asset('dashboard/images/avatar/avatar-5.jpg') }}"
-                                                                class="rounded-circle">
-                                                        </span>
-                                                        <span class="avatar avatar-sm">
-                                                            <img alt="avatar" src="{{ asset('dashboard/images/avatar/avatar-6.jpg') }}"
-                                                                class="rounded-circle">
-                                                        </span>
-                                                        <span class="avatar avatar-sm avatar-primary">
-                                                            <span class="avatar-initials rounded-circle
-                                    fs-6">+5</span>
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td class="align-middle text-dark">
-                                                    <div class="float-start me-3">35%</div>
-                                                    <div class="mt-2">
-                                                        <div class="progress" style="height: 5px;">
-                                                            <div class="progress-bar" role="progressbar" style="width:35%"
-                                                                aria-valuenow="35" aria-valuemin="0" aria-valuemax="100">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="align-middle">
-                                                    <div class="d-flex
-                                align-items-center">
-                                                        <div>
-                                                            <div class="icon-shape icon-md border p-4
-                                    rounded-1">
-                                                                <img src="{{ asset('dashboard/images/brand/github-logo.svg') }}" alt="">
-                                                            </div>
-                                                        </div>
-                                                        <div class="ms-3 lh-1">
-                                                            <h5 class=" mb-1"> <a href="#" class="text-inherit">GitHub
-                                                                    Satellite</a></h5>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="align-middle">120</td>
-                                                <td class="align-middle"><span class="badge bg-info">Low</span></td>
-                                                <td class="align-middle">
-                                                    <div class="avatar-group">
-                                                        <span class="avatar avatar-sm">
-                                                            <img alt="avatar" src="{{ asset('dashboard/images/avatar/avatar-7.jpg') }}"
-                                                                class="rounded-circle">
-                                                        </span>
-                                                        <span class="avatar avatar-sm">
-                                                            <img alt="avatar" src="{{ asset('dashboard/images/avatar/avatar-8.jpg') }}"
-                                                                class="rounded-circle">
-                                                        </span>
-                                                        <span class="avatar avatar-sm">
-                                                            <img alt="avatar" src="{{ asset('dashboard/images/avatar/avatar-9.jpg') }}"
-                                                                class="rounded-circle">
-                                                        </span>
-                                                        <span class="avatar avatar-sm avatar-primary">
-                                                            <span class="avatar-initials rounded-circle
-                                    fs-6">+1</span>
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td class="align-middle text-dark">
-                                                    <div class="float-start me-3">75%</div>
-                                                    <div class="mt-2">
-                                                        <div class="progress" style="height: 5px;">
-                                                            <div class="progress-bar" role="progressbar" style="width:75%"
-                                                                aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="align-middle">
-                                                    <div class="d-flex
-                                align-items-center">
-                                                        <div>
-                                                            <div class="icon-shape icon-md border p-4
-                                    rounded-1">
-                                                                <img src="{{ asset('dashboard/images/brand/3dsmax-logo.svg') }}" alt="">
-                                                            </div>
-                                                        </div>
-                                                        <div class="ms-3 lh-1">
-                                                            <h5 class=" mb-1"> <a href="#" class="text-inherit">3D Character
-                                                                    Modelling</a></h5>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="align-middle">89</td>
-                                                <td class="align-middle"><span class="badge
-                                bg-warning">Medium</span></td>
-                                                <td class="align-middle">
-                                                    <div class="avatar-group">
-                                                        <span class="avatar avatar-sm">
-                                                            <img alt="avatar" src="{{ asset('dashboard/images/avatar/avatar-10.jpg') }}"
-                                                                class="rounded-circle">
-                                                        </span>
-                                                        <span class="avatar avatar-sm">
-                                                            <img alt="avatar" src="{{ asset('dashboard/images/avatar/avatar-11.jpg') }}"
-                                                                class="rounded-circle">
-                                                        </span>
-                                                        <span class="avatar avatar-sm">
-                                                            <img alt="avatar" src="{{ asset('dashboard/images/avatar/avatar-12.jpg') }}"
-                                                                class="rounded-circle">
-                                                        </span>
-                                                        <span class="avatar avatar-sm avatar-primary">
-                                                            <span class="avatar-initials rounded-circle
-                                    fs-6">+5</span>
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td class="align-middle text-dark">
-                                                    <div class="float-start me-3">63%</div>
-                                                    <div class="mt-2">
-                                                        <div class="progress" style="height: 5px;">
-                                                            <div class="progress-bar" role="progressbar" style="width:63%"
-                                                                aria-valuenow="63" aria-valuemin="0" aria-valuemax="100">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="align-middle">
-                                                    <div class="d-flex
-                                align-items-center">
-                                                        <div>
-                                                            <div class="icon-shape icon-md border p-4 rounded
-                                    bg-primary">
-                                                                <img src="{{ asset('dashboard/images/brand/layers-logo.svg') }}" alt="">
-                                                            </div>
-                                                        </div>
-                                                        <div class="ms-3 lh-1">
-                                                            <h5 class=" mb-1"> <a href="#" class="text-inherit">Webapp
-                                                                    Design System</a>
-                                                            </h5>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="align-middle">108</td>
-                                                <td class="align-middle"><span class="badge
-                                bg-success">Track</span></td>
-                                                <td class="align-middle">
-                                                    <div class="avatar-group">
-                                                        <span class="avatar avatar-sm">
-                                                            <img alt="avatar" src="{{ asset('dashboard/images/avatar/avatar-13.jpg') }}"
-                                                                class="rounded-circle">
-                                                        </span>
-                                                        <span class="avatar avatar-sm">
-                                                            <img alt="avatar" src="{{ asset('dashboard/images/avatar/avatar-14.jpg') }}"
-                                                                class="rounded-circle">
-                                                        </span>
-                                                        <span class="avatar avatar-sm">
-                                                            <img alt="avatar" src="{{ asset('dashboard/images/avatar/avatar-15.jpg') }}"
-                                                                class="rounded-circle">
-                                                        </span>
-                                                        <span class="avatar avatar-sm avatar-primary">
-                                                            <span class="avatar-initials rounded-circle
-                                    fs-6">+5</span>
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td class="align-middle text-dark">
-                                                    <div class="float-start me-3">100%</div>
-                                                    <div class="mt-2">
-                                                        <div class="progress" style="height: 5px;">
-                                                            <div class="progress-bar bg-success" role="progressbar"
-                                                                style="width:100%" aria-valuenow="100" aria-valuemin="0"
-                                                                aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="align-middle border-bottom-0">
-                                                    <div class="d-flex
-                                align-items-center">
-                                                        <div>
-                                                            <div class="icon-shape icon-md border p-4 rounded-1">
-                                                                <img src="{{ asset('dashboard/images/brand/github-logo.svg') }}" alt="">
-                                                            </div>
-                                                        </div>
-                                                        <div class="ms-3 lh-1">
-                                                            <h5 class=" mb-1"> <a href="#" class="text-inherit">Github Event
-                                                                    Design</a>
-                                                            </h5>
-
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="align-middle border-bottom-0">120</td>
-                                                <td class="align-middle border-bottom-0"><span
-                                                        class="badge bg-info">Low</span></td>
-                                                <td class="align-middle border-bottom-0">
-                                                    <div class="avatar-group">
-                                                        <span class="avatar avatar-sm">
-                                                            <img alt="avatar" src="{{ asset('dashboard/images/avatar/avatar-13.jpg') }}"
-                                                                class="rounded-circle">
-                                                        </span>
-                                                        <span class="avatar avatar-sm">
-                                                            <img alt="avatar" src="{{ asset('dashboard/images/avatar/avatar-14.jpg') }}"
-                                                                class="rounded-circle">
-                                                        </span>
-                                                        <span class="avatar avatar-sm">
-                                                            <img alt="avatar" src="{{ asset('dashboard/images/avatar/avatar-15.jpg') }}"
-                                                                class="rounded-circle">
-                                                        </span>
-                                                        <span class="avatar avatar-sm avatar-primary">
-                                                            <span class="avatar-initials rounded-circle
-                                    fs-6">+1</span>
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td class="align-middle text-dark border-bottom-0">
-                                                    <div class="float-start me-3">75%</div>
-                                                    <div class="mt-2">
-                                                        <div class="progress" style="height: 5px;">
-                                                            <div class="progress-bar" role="progressbar" style="width:75%"
-                                                                aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- card footer  -->
-                                <div class="card-footer bg-white text-center">
-                                    <a href="#" class="link-primary">View All Projects</a>
-
-                                </div>
-                            </div>
-
-                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                        </a>
                     </div>
                 </div>
-@endsection
+                <div class="col-sm-12 col-md-5">
+
+                </div>
+            </div>
+        </section>
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    @forelse ($menus as $menu)
+                    <li class="nav-item">
+                        <a class="btn text-light me-2" href="{{ $menu->action }}" style="background-color: {{ $menu->color }};" target="_blank">
+                            <i class="fas fa-{{ $menu->icon }}"></i>
+                            {{ $menu->name }}
+                        </a>
+                    </li>
+                    @empty
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" disabled>
+                            Não há menus cadastrados
+                        </a>
+                    </li>
+                @endforelse
+                </ul>
+              </div>
+            </div>
+          </nav>
+
+
+        @forelse ($sections as $section)
+        <hr>
+        <h3 class="mb-3">
+            {{ $section->name }}
+        </h3>
+        <section id="posts" class="mb-3">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                @forelse ($section->contents as $card)
+                    <div class="col mb-4">
+                        <div class="card h-100 border-0">
+                            <img src="{{ $card->image }}" class="card-img-top" alt="{{ $card->name }}" loading="lazy">
+                            <div class="card-body">
+                                <span class="mb-2 badge rounded-pill bg-info text-light">
+                                    <i class="fas fa-sticky-note"></i>
+                                    <span>
+                                        {{ $card->type->name }}
+                                    </span>
+                                </span>
+                                <h5 class="card-title">
+                                    {{ $card->name }}
+                                </h5>
+                                <p class="card-text">
+                                    {{ $card->content }}
+                                </p>
+                                @if (!empty($card->action))
+                                    <a href="{{ $card->action }}" class="btn text-light" style="background-color: {{ $card->callToAction->color }}" target="_blank">
+                                        {{ $card->callToAction->name }}
+                                    </a>
+                                @endif
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    Publicado em: {{ $card->created_at->format('d/m/Y') }}
+                                </small>
+                              </div>
+                        </div>
+                    </div>
+                @empty
+                    <div class="col-sm-12">
+                        <p class="text-center">
+                            Nenhum conteúdo encontrado.
+                        </p>
+                    </div>
+                @endforelse
+
+            </div>
+        </section>
+        @empty
+
+        @endforelse
+    </main>
+    <footer>
+        <div class="container">
+            <p class="text-center">
+                Desenvolvido com ❤️ por <a href="http://matheusteixeira.com.br" target="_blank" rel="noopener noreferrer">
+                    Matheus Teixeira
+                </a>
+            </p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+
+</html>

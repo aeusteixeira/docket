@@ -11,7 +11,6 @@ class DashboardController extends Controller
     {
         return view('dashboard.index', [
             'title' => 'Dashboard',
-            // Get 10 last contents
             'contents' => Content::orderBy('created_at', 'desc')->paginate(10),
         ]);
     }

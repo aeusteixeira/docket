@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Configuration;
+use App\Models\Content;
+use App\Models\Menu;
+use App\Models\Section;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\File;
 use ZipArchive;
@@ -36,6 +39,34 @@ class GeneratorTeamsAppController extends Controller
         $this->terms_and_conditions = $configuration->where('key', 'terms_and_conditions')->first()->value;
         $this->privacy_policy = $configuration->where('key', 'privacy_policy')->first()->value;
         $this->baseUrl = URL::to('/') . '/' . $this->app_key;
+    }
+
+    public function index($key){
+        if($key != $this->app_key){
+            return abort(404);
+        }
+
+        // Banners
+        $banners = Content::where('type_id', 2)->get();
+
+        // Seções e seus conteúdos
+        $sections = Section::with('contents')->get();
+
+        // Menus order by order
+        $menus = Menu::orderBy('order')->get();
+
+        return view('app', [
+            'company_name' => $this->company_name,
+            'full_description' => $this->full_description,
+            'company_website' => $this->company_website,
+            'terms_and_conditions' => $this->terms_and_conditions,
+            'privacy_policy' => $this->privacy_policy,
+            'baseUrl' => $this->baseUrl,
+            'banners' => $banners,
+            'sections' => $sections,
+            'menus' => $menus,
+        ]);
+
     }
 
     public function createJson(){
