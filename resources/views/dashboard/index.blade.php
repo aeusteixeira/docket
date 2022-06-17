@@ -181,50 +181,51 @@
         </div>
             @if (session('first_access'))
 
-            @endif
+                <!-- Modal -->
+                <div class="modal fade" id="firstAccess" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="firstAccessLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="firstAccessLabel">
+                                Olá, {{ Auth::user()->name }}
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h2 class="text-center">
+                                            Bem-vindo ao seu Docket!
+                                        </h2>
+                                        <p class="text-center text-lead">
+                                            Este é o primeiro acesso ao sistema! <br> Para começar, você precisa realizar o download dos arquivos de importação e configuração do Microsoft Teams. Após o download, acompanhe o passo a passo para configurar o sistema no vídeo a seguir. <br>
+                                        </p>
+                                        <p class="text-center">
+                                            <a href="{{ route('dashboard.download-teams-app') }}" class="btn btn-primary btn-sm" target="_blank">
+                                                <i class="fas fa-download"></i> Download
+                                            </a>
+                                        </p>
 
-            <!-- Modal -->
-            <div class="modal fade" id="firstAccess" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="firstAccessLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="firstAccessLabel">
-                        Olá, {{ Auth::user()->name }}
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        <iframe width="100%" height="400" src="https://www.youtube.com/embed/q-_X-_X-_X-A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                Fechar
+                            </button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-12">
-                                <h2 class="text-center">
-                                    Bem-vindo ao seu Docket!
-                                </h2>
-                                <p class="text-center text-lead">
-                                    Este é o primeiro acesso ao sistema! <br> Para começar, você precisa realizar o download dos arquivos de importação e configuração do Microsoft Teams. Após o download, acompanhe o passo a passo para configurar o sistema no vídeo a seguir. <br>
-                                </p>
-                                <p class="text-center">
-                                    <a href="{{ route('dashboard.download-teams-app') }}" class="btn btn-primary btn-sm" target="_blank">
-                                        <i class="fas fa-download"></i> Download
-                                    </a>
-                                </p>
-
-                                <iframe width="100%" height="400" src="https://www.youtube.com/embed/q-_X-_X-_X-A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                        Fechar
-                    </button>
                     </div>
                 </div>
                 </div>
-            </div>
-    </div>
-@endsection
-
-@push('scripts')
+                @push('scripts')
     <script>
         var firstAccess = new bootstrap.Modal(document.getElementById('firstAccess'));
         firstAccess.show();
     </script>
 @endpush
+            @endif
+@endsection
+
+
