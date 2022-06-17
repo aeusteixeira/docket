@@ -24,12 +24,10 @@
 
                     </li>
 
-
                     <!-- Nav item -->
                     <li class="nav-item">
-                        <div class="navbar-heading">Conteúdos & Comunicados</div>
+                        <div class="navbar-heading">Conteúdos</div>
                     </li>
-
 
                     <!-- Nav item -->
                     <li class="nav-item">
@@ -85,6 +83,39 @@
                         </div>
                     </li>
 
+                    <!-- Nav item -->
+                    <li class="nav-item">
+                        <div class="navbar-heading">Links e Menu</div>
+                    </li>
+
+
+                    <!-- Nav item -->
+                    <li class="nav-item">
+                        <a class="nav-link has-arrow  collapsed " href="#!" data-bs-toggle="collapse"
+                            data-bs-target="#navMenu" aria-expanded="false" aria-controls="navMenu">
+                            <i data-feather="menu" class="nav-icon icon-xs me-2">
+                            </i>
+                            Links e Menu
+                        </a>
+
+                        <div id="navMenu" class="collapse " data-bs-parent="#sideNavbar">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link has-arrow" href="{{ route('dashboard.menus.create') }}">
+                                        <i data-feather="plus-circle" class="nav-icon icon-xs me-2">
+                                        </i> Criar novo
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="{{ route('dashboard.menus.index') }}">
+                                        <i data-feather="list" class="nav-icon icon-xs me-2">
+                                        </i> Visualizar todos
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </li>
 
                     <!-- Nav item -->
                     <li class="nav-item">

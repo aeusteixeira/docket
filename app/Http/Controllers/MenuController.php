@@ -15,7 +15,10 @@ class MenuController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.menus.index', [
+            'title' => 'Menus',
+            'menus' => Menu::paginate(10),
+        ]);
     }
 
     /**
@@ -81,6 +84,10 @@ class MenuController extends Controller
      */
     public function destroy(Menu $menu)
     {
-        //
+        Menu::destroy($menu->id);
+
+        return redirect()->route('dashboard.menus.index')
+        ->with('message', 'Link excluido com sucesso!')
+        ->with('type', 'success');
     }
 }
