@@ -63,7 +63,10 @@ class MenuController extends Controller
      */
     public function edit(Menu $menu)
     {
-        //
+        return view('dashboard.menus.edit', [
+            'title' => 'Editar Menu',
+            'menu' => $menu,
+        ]);
     }
 
     /**
