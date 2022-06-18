@@ -28,7 +28,9 @@ class MenuController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.menus.create', [
+            'title' => 'Criar Menu',
+        ]);
     }
 
     /**
