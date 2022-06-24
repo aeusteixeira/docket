@@ -15,6 +15,11 @@ class Group extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->hasMany(User::class);
+    }
+
+    public function emails()
+    {
+        return $this->belongsToMany(Email::class, 'emails_groups');
     }
 }

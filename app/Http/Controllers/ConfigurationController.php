@@ -15,7 +15,10 @@ class ConfigurationController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.configurations.index', [
+            'title' => 'Configurações',
+            'configurations' => Configuration::paginate(10),
+        ]);
     }
 
     /**
@@ -25,7 +28,9 @@ class ConfigurationController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.configurations.create', [
+            'title' => 'Nova Configuração',
+        ]);
     }
 
     /**
@@ -36,7 +41,11 @@ class ConfigurationController extends Controller
      */
     public function store(StoreConfigurationRequest $request)
     {
-        //
+        Configuration::create($request->all());
+
+        return redirect()->route('dashboard.configurations.index')
+        ->with('message', 'Configuração criada com sucesso!')
+        ->with('type', 'success');
     }
 
     /**
@@ -58,7 +67,10 @@ class ConfigurationController extends Controller
      */
     public function edit(Configuration $configuration)
     {
-        //
+        return view('dashboard.configurations.edit', [
+            'title' => 'Editar Configuração',
+            'configuration' => $configuration,
+        ]);
     }
 
     /**
@@ -70,7 +82,11 @@ class ConfigurationController extends Controller
      */
     public function update(UpdateConfigurationRequest $request, Configuration $configuration)
     {
-        //
+        $configuration->update($request->all());
+
+        return redirect()->route('dashboard.configurations.index')
+        ->with('message', 'Configuração atualizada com sucesso!')
+        ->with('type', 'success');
     }
 
     /**
@@ -83,4 +99,6 @@ class ConfigurationController extends Controller
     {
         //
     }
+
+
 }

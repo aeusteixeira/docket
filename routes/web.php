@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     AuthController,
+    ConfigurationController,
     ContentController,
     DashboardController,
+    EmailController,
     GroupController,
     UserController,
     GeneratorTeamsAppController,
@@ -31,9 +33,10 @@ Route::group(['prefix' => 'app', 'as' => 'dashboard.', 'middleware' => ['auth']]
     Route::resource('contents', ContentController::class);
     Route::resource('users', UserController::class);
     Route::resource('menus', MenuController::class);
+    Route::resource('emails', EmailController::class);
+    Route::resource('configurations', ConfigurationController::class);
     Route::get('users/import', [UserController::class, 'import'])->name('users.import');
     Route::resource('groups', GroupController::class);
-    Route::get('/settings', [DashboardController::class, 'settings'])->name('settings');
     Route::get('/download-teams-app', [GeneratorTeamsAppController::class, 'downloadZipFile'])->name('download-teams-app');
 });
 

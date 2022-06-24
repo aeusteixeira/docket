@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreConfigurationRequest extends FormRequest
+class UpdateEmailRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class StoreConfigurationRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -24,8 +24,7 @@ class StoreConfigurationRequest extends FormRequest
     public function rules()
     {
         return [
-            'key' => 'required|string|max:255|unique:configurations,key',
-            'value' => 'required|string|max:4000',
+            //
         ];
     }
 }

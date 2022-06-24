@@ -13,7 +13,7 @@ class UpdateConfigurationRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class UpdateConfigurationRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'key' => 'string|max:255|unique:configurations,key',
+            'value' => 'required|string|max:4000',
         ];
     }
 }

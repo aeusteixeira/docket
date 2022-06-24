@@ -220,10 +220,10 @@
                 </div>
                 </div>
                 @push('scripts')
-    <script>
-        var firstAccess = new bootstrap.Modal(document.getElementById('firstAccess'));
-        firstAccess.show();
-    </script>
+        <script>
+            var firstAccess = new bootstrap.Modal(document.getElementById('firstAccess'));
+            firstAccess.show();
+        </script>
 @endpush
             @endif
 @endsection

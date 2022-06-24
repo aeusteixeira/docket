@@ -10,5 +10,5 @@
 
 <!-- Theme JS -->
 <script src="{{ asset('dashboard/js/theme.min.js') }}"></script>
-@livewireScripts
 @stack('scripts')
+@livewireScripts

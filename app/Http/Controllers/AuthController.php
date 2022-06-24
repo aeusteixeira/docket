@@ -91,6 +91,7 @@ class AuthController extends Controller
             'company_name' => $request->company_name,
             'company_website' => $request->company_website,
             'app_key' => Str::uuid(),
+            'company_logo' => $request->company_logo,
         ];
 
         $this->saveConfiguration($setting);

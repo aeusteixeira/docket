@@ -29,6 +29,7 @@ class StoreFirstAcessRequest extends FormRequest
             'password' => 'required|string|min:6',
             'company_name' => 'required|string|max:255',
             'company_website' => 'required|string|max:255',
+            'company_logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 }

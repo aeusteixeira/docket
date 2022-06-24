@@ -68,13 +68,13 @@
                         <div id="navAuthentication" class="collapse " data-bs-parent="#sideNavbar">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link " href="./pages/sign-in.html">
+                                    <a class="nav-link " href="{{ route('dashboard.emails.create') }}">
                                         <i data-feather="plus-circle" class="nav-icon icon-xs me-2">
                                         </i> Criar novo
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link  " href="./pages/sign-up.html">
+                                    <a class="nav-link  " href="{{ route('dashboard.emails.index') }}">
                                         <i data-feather="list" class="nav-icon icon-xs me-2">
                                         </i> Visualizar todos
                                     </a>
@@ -187,8 +187,8 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="{{ route('dashboard.settings') }}">
-                            <i data-feather="settings" class="nav-icon icon-xs me-2">
+                        <a class="nav-link " href="{{ route('dashboard.configurations.index') }}">
+                            <i data-feather="configuration" class="nav-icon icon-xs me-2">
                             </i>
                             Configurações
                         </a>

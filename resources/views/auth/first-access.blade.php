@@ -90,6 +90,15 @@
                         <strong>Observação:</strong> É obrigatório o uso de certificado SSL.
                     </small>
                 </div>
+                <div class="form-group">
+                    <label class="form-label" for="company_logo">
+                        URL do logo
+                    </label>
+                    <input type="url" class="form-control" placeholder="Exemplo: https://www.google.com.br/logo.png" name="company_logo" value="{{ old('company_logo') }}" required>
+                    @error('company_logo')
+                        <x-error-input :message="$message"/>
+                    @enderror
+                </div>
                 <hr>
                 <strong>
                     Importante:
