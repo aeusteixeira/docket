@@ -29,12 +29,15 @@ class Create extends Component
 
     public $hasCTA = false;
     public $callToAction;
+    public $ctaURL;
 
     protected $rules = [
         'title' => 'required|min:3',
         'body' => 'required|min:3',
         'attachment' => 'nullable|mimes:doc,docx,xls,xlsx,ppt,pptx,pdf,zip,rar',
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'callToAction' => 'nullable|min:3',
+        'ctaURL' => 'nullable|url',
     ];
 
     public function mount()
@@ -64,7 +67,9 @@ class Create extends Component
             'title' => $this->title,
             'body' => $this->body,
             //'attachment' => Storage::disk('public')->put('emails', $this->attachment),
-            //'image' => Storage::disk('public')->put('emails', $this->image)
+            'image' => Storage::disk('public')->put('emails', $this->image),
+            'call_to_action' => $this->callToAction,
+            'cta_link' => $this->ctaURL,
         ]);
 
         $email->groups()->attach($this->groupsSelected);

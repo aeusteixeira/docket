@@ -53,6 +53,33 @@
                         @endif
                         <hr>
                         <div class="form-group">
+                            <label for="hasCTA">
+                                Adicionar botão de ação?
+                            </label>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="hasCTA" checked wire:model="hasCTA">
+                                <label class="form-check-label" for="hasCTA">Sim</label>
+                              </div>
+                              @error('hasCTA')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        @if ($hasCTA)
+                            <div class="form-group">
+                                <label for="callToAction">
+                                    Texto do botão de ação
+                                </label>
+                                <input type="text" class="form-control" id="callToAction" name="callToAction" wire:model="callToAction" placeholder="Exemplo: Convidar amigos">
+                            </div>
+                            <div class="form-group">
+                                <label for="ctaURL">
+                                    Link do botão de ação
+                                </label>
+                                <input type="text" class="form-control" id="ctaURL" name="ctaURL" wire:model="ctaURL" placeholder="Exemplo: {{ global_config('company_website') }}/invite">
+                            </div>
+                        @endif
+                        <hr>
+                        <div class="form-group">
                             <label for="groups">
                                 Selecione os grupos que receberão o comunicado
                             </label>
@@ -257,6 +284,13 @@
                         </div>
                         <div class="text-lead">
                             {!! $body !!}
+                            @if ($hasCTA && $callToAction)
+                                <div class="form-group text-center">
+                                    <a href="#" class="btn btn-primary">
+                                        {{ $callToAction }}
+                                    </a>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

@@ -12,6 +12,8 @@ use App\Http\Controllers\{
     GeneratorTeamsAppController,
     MenuController
 };
+use App\Models\Email;
+use Illuminate\Mail\Markdown;
 
 Route::get('/', [AuthController::class, 'login'])->name('auth.index');
 Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
@@ -43,4 +45,10 @@ Route::group(['prefix' => 'app', 'as' => 'dashboard.', 'middleware' => ['auth']]
 // Rota publica para acesso ao app
 Route::get('/app/{app_key}', [GeneratorTeamsAppController::class, 'index'])->name('app.index');
 
-Route::get('teste', [GeneratorTeamsAppController::class, 'generate'])->name('teste');
+Route::get('teste', function () {
+    $markdown = new Markdown(view(), config('mail.markdown'));
+
+    return $markdown->render('emails.templates.pattern', [
+        'email' => Email::find(1),
+    ]);
+});

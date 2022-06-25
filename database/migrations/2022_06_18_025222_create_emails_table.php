@@ -17,6 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('body');
+            $table->string('image')->nullable();
+            $table->string('attachment')->nullable();
+            $table->string('call_to_action')->nullable();
+            $table->string('cta_link')->nullable();
             $table->timestamps();
         });
     }
