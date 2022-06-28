@@ -50,6 +50,9 @@
                                 </label>
                                 <input type="file" class="form-control" id="attachment" name="attachment" wire:model="attachment">
                             </div>
+                            @error('attachment')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         @endif
                         <hr>
                         <div class="form-group">
@@ -71,12 +74,18 @@
                                 </label>
                                 <input type="text" class="form-control" id="callToAction" name="callToAction" wire:model="callToAction" placeholder="Exemplo: Convidar amigos">
                             </div>
+                            @error('callToAction')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <div class="form-group">
                                 <label for="ctaURL">
                                     Link do botão de ação
                                 </label>
                                 <input type="text" class="form-control" id="ctaURL" name="ctaURL" wire:model="ctaURL" placeholder="Exemplo: {{ global_config('company_website') }}/invite">
                             </div>
+                            @error('ctaURL')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         @endif
                         <hr>
                         <div class="form-group">

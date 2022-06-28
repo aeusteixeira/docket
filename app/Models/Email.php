@@ -11,6 +11,10 @@ class Email extends Model
     protected $fillable = [
         'title',
         'body',
+        'attachment',
+        'image',
+        'call_to_action',
+        'cta_link',
     ];
 
     public function groups()

@@ -52,13 +52,6 @@ class Create extends Component
         $this->groupsNames = $this->groups->whereIn('id', $value)->pluck('name');
     }
 
-    public function updatedImage()
-    {
-        if ($this->image) {
-            Storage::disk('public')->put('emails', $this->image);
-        }
-    }
-
     public function submit()
     {
         $this->validate();
@@ -66,7 +59,7 @@ class Create extends Component
         $email = Email::create([
             'title' => $this->title,
             'body' => $this->body,
-            //'attachment' => Storage::disk('public')->put('emails', $this->attachment),
+            'attachment' => Storage::disk('public')->put('emails', $this->attachment),
             'image' => Storage::disk('public')->put('emails', $this->image),
             'call_to_action' => $this->callToAction,
             'cta_link' => $this->ctaURL,

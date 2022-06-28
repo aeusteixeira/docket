@@ -81,7 +81,7 @@ a[x-apple-data-detectors] {
                   <td align="center" valign="top" style="padding:0;Margin:0;width:600px">
                    <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                      <tr style="border-collapse:collapse">
-                      <td align="center" style="padding:10px;Margin:0;font-size:0px"><a target="_blank" href="https://bpoinnova.com/" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#E2424A;font-size:14px"><img class="adapt-img" src="https://tpvxlo.stripocdn.email/content/guids/90d3df0b-25e5-49ab-b944-f9110e4e54f8/images/logobpo20211024x320_2.png" alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="170"></a></td>
+                      <td align="center" style="padding:10px;Margin:0;font-size:0px"><a target="_blank" href="{{ global_config('company_website') }}" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#E2424A;font-size:14px"><img class="adapt-img" src="{{ global_config('company_logo') }}" alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="170"></a></td>
                      </tr>
                    </table></td>
                  </tr>
@@ -94,14 +94,20 @@ a[x-apple-data-detectors] {
                   <td valign="top" align="center" style="padding:0;Margin:0;width:600px">
                    <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                      <tr style="border-collapse:collapse">
-                      <td align="center" style="padding:0;Margin:0;font-size:0px"><img class="adapt-img" src="https://tpvxlo.stripocdn.email/content/guids/CABINET_935f6a211b39218dd8c6a1ce21633237/images/header_email_de_comunicado.png" alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="600"></td>
+                      <td align="center" style="padding:0;Margin:0;font-size:0px"><img class="adapt-img" src="{{ asset('storage/'.$email->image) }}" alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="600"></td>
                      </tr>
                      <tr style="border-collapse:collapse">
-                      <td align="left" bgcolor="#ffffff" style="padding:30px;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Devido ao aumento significativo nos casos da gripe Influenza (H3N2) e a nova variante do Covid-19 (Omicron), e prezando pela saúde dos nossos colaboradores e famílias pedimos que respondam a pesquisa a seguir.<br><br>O intuito é termos dados necessários para planejar a atuação dos nossos times nos escritórios ou em home office, assim como para prestar suporte em caso de necessidade.<br><br>Ressaltamos que a participação é <strong>obrigatória </strong>a todos os colaboradores.</p></td>
+                      <td align="left" bgcolor="#ffffff" style="padding:30px;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">
+                        {!! $email->body !!}
+                    </td>
                      </tr>
+                     @if ($email->call_to_action)
                      <tr style="border-collapse:collapse">
-                      <td align="center" bgcolor="#ffffff" style="padding:0;Margin:0"><span class="es-button-border" style="border-style:solid;border-color:#3d3d3d;background:#ed6711;border-width:1px;display:inline-block;border-radius:0px;width:auto"><a href="https://forms.office.com/r/tXMZq2aT2K" class="es-button" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#fefefe;font-size:16px;border-style:solid;border-color:#ed6711;border-width:10px 20px 10px 20px;display:inline-block;background:#ed6711;border-radius:0px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:19px;width:auto;text-align:center">Responder pesquisa</a></span></td>
-                     </tr>
+                        <td align="center" bgcolor="#ffffff" style="padding:0;Margin:0"><span class="es-button-border" style="border-style:solid;border-color:#3d3d3d;background:#ed6711;border-width:1px;display:inline-block;border-radius:0px;width:auto"><a href="{{ $email->cta_link }}" class="es-button" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#fefefe;font-size:16px;border-style:solid;border-color:#ed6711;border-width:10px 20px 10px 20px;display:inline-block;background:#ed6711;border-radius:0px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:19px;width:auto;text-align:center">
+                            {{ $email->call_to_action }}
+                        </a></span></td>
+                       </tr>
+                     @endif
                    </table></td>
                  </tr>
                </table></td>
@@ -133,7 +139,9 @@ a[x-apple-data-detectors] {
                   <td valign="top" align="center" style="padding:0;Margin:0;width:600px">
                    <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                      <tr style="border-collapse:collapse">
-                      <td align="center" style="padding:5px;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:20px;color:#000000;font-size:13px">Acompanhe a BPO Innova também nas redes sociais!</p></td>
+                      <td align="center" style="padding:5px;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:20px;color:#000000;font-size:13px;text-align:center; padding-top: 8px;">
+                        Acompanhe a {{ global_config('company_name') }} também nas redes sociais!</p>
+                    </td>
                      </tr>
                      <tr style="border-collapse:collapse">
                       <td align="center" style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px;font-size:0px">

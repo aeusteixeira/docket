@@ -7,6 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Storage;
 
 class Pattern extends Mailable
 {
@@ -37,6 +38,10 @@ class Pattern extends Mailable
             foreach ($users as $user) {
                 $this->to($user->email);
             }
+        }
+
+        if ($this->email->attachment) {
+            $this->attach(Storage::url($this->email->attachment));
         }
 
         return $this->markdown('emails.templates.pattern', [
