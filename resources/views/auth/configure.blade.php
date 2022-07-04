@@ -113,7 +113,37 @@
                         <x-error-input :message="$message"/>
                     @enderror
                 </div>
-                <div class="my-3 d-grid">
+                <hr>
+                <div class="form-group">
+                    <h4>
+                        Personalização e cores
+                    </h4>
+                    <div class="form-group">
+                        <label for="primary_color">
+                            Cor principal
+                        </label>
+                        <input type="color" class="form-control" name="primary_color" id="primary_color" value="#000b76" required>
+                        @error('primary_color')
+                            <x-error-input :message="$message"/>
+                        @enderror
+                        <small>
+                            A cor principal é a cor que será utilizada no fundo dos e-mails de comunicados.
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="secondary_color">
+                            Cor secundária
+                        </label>
+                        <input type="color" class="form-control" name="secondary_color" id="secondary_color" value="#e7008a" required>
+                        @error('secondary_color')
+                            <x-error-input :message="$message"/>
+                        @enderror
+                        <small>
+                            A cor secundária é a cor que será nos botões de ação.
+                        </small>
+                    <div>
+                </div>
+                                <div class="my-3 d-grid">
                   <button type="submit" class="btn btn-primary">
                         <i class="fas fa-check"></i>
                         Finalizar configuração

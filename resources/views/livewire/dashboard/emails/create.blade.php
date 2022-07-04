@@ -31,6 +31,7 @@
                                 <input type="file" class="form-control" id="image" name="image" wire:model="image">
                             </div>
                             <hr>
+                            {{--
                         <div class="form-group">
                             <label for="hasAttachment">
                                 Adicionar anexo?
@@ -54,6 +55,7 @@
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         @endif
+                        --}}
                         <hr>
                         <div class="form-group">
                             <label for="hasCTA">
@@ -282,7 +284,7 @@
                     </div>
                 @endif
             </div>
-            <div class="card-body"  style="background-color: #000b76">
+            <div class="card-body"  style="background-color: {{ global_config('primary_color') }}">
                 <div class="card shadow-sm">
                     <div class="card-header text-center">
                         <img src="{{ global_config('company_logo') }}" alt="{{ $title }} logo" style="max-width: 180px">
@@ -295,7 +297,7 @@
                             {!! $body !!}
                             @if ($hasCTA && $callToAction)
                                 <div class="form-group text-center">
-                                    <a href="#" class="btn btn-primary">
+                                    <a href="#" class="btn text-light" style="background-color: {{ global_config('secondary_color') }}">
                                         {{ $callToAction }}
                                     </a>
                                 </div>

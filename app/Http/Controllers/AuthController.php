@@ -121,6 +121,8 @@ class AuthController extends Controller
             'privacy_policy' => $request->privacy_policy,
             'terms_and_conditions' => $request->terms_and_conditions,
             'image' => Storage::putFileAs('public/app', $request->image, 'color.png'),
+            'primary_color' => $request->primary_color,
+            'secondary_color' => $request->secondary_color,
         ];
 
         $this->saveConfiguration($settings);

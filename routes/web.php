@@ -49,6 +49,6 @@ Route::get('teste', function () {
     $markdown = new Markdown(view(), config('mail.markdown'));
 
     return $markdown->render('emails.templates.pattern', [
-        'email' => Email::find(4),
+        'email' => Email::find(2),
     ]);
 });

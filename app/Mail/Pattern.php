@@ -40,9 +40,9 @@ class Pattern extends Mailable
             }
         }
 
-        if ($this->email->attachment) {
-            $this->attach(Storage::url($this->email->attachment));
-        }
+        // if ($this->email->attachment) {
+        // $this->attach(Storage::get($this->email->attachment));
+        // }
 
         return $this->markdown('emails.templates.pattern', [
             'email' => $this->email,

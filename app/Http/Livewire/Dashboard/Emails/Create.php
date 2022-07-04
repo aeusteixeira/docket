@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Dashboard\Emails;
 
+use App\Jobs\newCommunique;
 use App\Mail\Pattern;
 use App\Models\Email;
 use App\Models\Group;
@@ -59,7 +60,7 @@ class Create extends Component
         $email = Email::create([
             'title' => $this->title,
             'body' => $this->body,
-            'attachment' => Storage::disk('public')->put('emails', $this->attachment),
+            'attachment' => ($this->hasAttachment) ? $this->attachment->store('emails/attachments') : null,
             'image' => Storage::disk('public')->put('emails', $this->image),
             'call_to_action' => $this->callToAction,
             'cta_link' => $this->ctaURL,
@@ -67,10 +68,10 @@ class Create extends Component
 
         $email->groups()->attach($this->groupsSelected);
 
-        Mail::send(new Pattern($email));
+        newCommunique::dispatch($email)->delay(now()->addSeconds(5));
 
         return redirect()->route('dashboard.emails.index')
-        ->with('message', 'O e-mail está sendo enviado...')
+        ->with('message', 'O e-mail foi enviado com sucesso!')
         ->with('type', 'success');
     }
 
