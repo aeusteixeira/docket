@@ -191,8 +191,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="row">
-                            <div class="col-12">
+                            <div class="modal-header">
                                 {{ $popup->content }}
                             </div>
                             <div class="modal-footer">
@@ -200,12 +199,11 @@
                                     Fechar
                                 </button>
                                 @if (!empty($popup->action))
-                                    <a href="{{ $popup->action }}" class="btn btn-primary" target="_blank">
+                                    <a href="{{ $popup->action }}" class="btn text-light" style="background-color: {{ $popup->callToAction->color }}" target="_blank">
                                         {{ $popup->callToAction->name }}
                                     </a>
                                 @endif
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
