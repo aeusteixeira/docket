@@ -37,7 +37,7 @@ Route::group(['prefix' => 'app', 'as' => 'dashboard.', 'middleware' => ['auth']]
     Route::resource('menus', MenuController::class);
     Route::resource('emails', EmailController::class);
     Route::resource('configurations', ConfigurationController::class);
-    Route::get('users/import', [UserController::class, 'import'])->name('users.import');
+    Route::post('users/import', [UserController::class, 'import'])->name('users.import');
     Route::resource('groups', GroupController::class);
     Route::get('/download-teams-app', [GeneratorTeamsAppController::class, 'downloadZipFile'])->name('download-teams-app');
 });

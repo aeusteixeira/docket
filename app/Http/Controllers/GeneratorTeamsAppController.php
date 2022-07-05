@@ -55,6 +55,9 @@ class GeneratorTeamsAppController extends Controller
         // Menus order by order
         $menus = Menu::orderBy('order')->get();
 
+        // Pop-ups
+        $popups = Content::where('type_id', 3)->get();
+
         return view('app', [
             'company_name' => $this->company_name,
             'full_description' => $this->full_description,
@@ -65,6 +68,7 @@ class GeneratorTeamsAppController extends Controller
             'banners' => $banners,
             'sections' => $sections,
             'menus' => $menus,
+            'popups' => $popups,
         ]);
 
     }

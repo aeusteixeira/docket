@@ -188,7 +188,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " href="{{ route('dashboard.configurations.index') }}">
-                            <i data-feather="configuration" class="nav-icon icon-xs me-2">
+                            <i data-feather="sliders" class="nav-icon icon-xs me-2">
                             </i>
                             Configurações
                         </a>
@@ -198,6 +198,19 @@
                             <i data-feather="log-out" class="nav-icon icon-xs me-2">
                             </i>
                             Sair
+                        </a>
+                    </li>
+                    <!-- Nav item -->
+                    <li class="nav-item">
+                        <div class="navbar-heading">
+                            Seu Dcoket
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{ route('app.index', global_config('app_key')) }}">
+                            <i data-feather="external-link" class="nav-icon icon-xs me-2">
+                            </i>
+                            Visualizar
                         </a>
                     </li>
                 </ul>

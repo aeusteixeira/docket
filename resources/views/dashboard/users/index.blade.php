@@ -30,7 +30,7 @@
                     ],
                     [
                         'url' => route('dashboard.users.import'),
-                        'type' => 'primary',
+                        'type' => 'info',
                         'icon' => 'fa fa-upload',
                         'label' => 'Importar Usuários'
                     ]

@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Imports\UsersImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -93,6 +95,15 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route('dashboard.users.index')
         ->with('message', 'Usuário excluído com sucesso!')
+        ->with('type', 'success');
+    }
+
+    public function import(Request $request)
+    {
+        Excel::import(new UsersImport, $request->file);
+
+        return redirect()->route('dashboard.users.index')
+        ->with('message', 'Usuários importados com sucesso!')
         ->with('type', 'success');
     }
 }

@@ -15,7 +15,7 @@
                     aria-labelledby="modal-import-Title" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
-                            <form action="{{ $action['url'] }}" method="POST">
+                            <form action="{{ $action['url'] }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="modal-import-Title">
@@ -26,6 +26,11 @@
                                 <div class="modal-body">
                                     <p>
                                         Importe um arquivo Excel com os dados de usuários. Baixe o modelo de importação <a href="">aqui</a>.
+                                    </p>
+                                    <p>
+                                        Precisa de ajuda para entender como importar os usuários via Excel? <a href="http://" target="_blank" rel="noopener noreferrer">
+                                            Assista o vídeo demonstrando.
+                                        </a>
                                     </p>
                                     <p>
                                         <input type="file" name="file" class="form-control-file" id="file">

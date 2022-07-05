@@ -79,7 +79,7 @@ class Create extends Component
     public function updatedImage()
     {
         if ($this->image) {
-            $this->image = Storage::disk('public')->put('contents', $this->image);
+            Storage::disk('public')->put('contents', $this->image);
         }
     }
 
