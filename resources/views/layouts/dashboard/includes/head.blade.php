@@ -32,6 +32,6 @@
     @livewireStyles
     @stack('styles')
     <title>
-        {{ $title . ' - ' . 'BPO Innova' ?? env('APP_NAME') }}
+        {{ $title }} - {{ env('APP_NAME') }}
     </title>
 </head>

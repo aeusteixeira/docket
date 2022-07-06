@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreConfigureRequest;
 use App\Http\Requests\StoreFirstAcessRequest;
 use App\Models\Configuration;
+use App\Models\Group;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -80,11 +81,18 @@ class AuthController extends Controller
 
     public function firstAccessGenerate(StoreFirstAcessRequest $request)
     {
+        $group = Group::create([
+            'name' => 'Administrador',
+            'description' => 'Administrador do sistema'
+        ]);
+
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => $request->password,
             'is_admin' => true,
+            'group_id' => $group->id
         ]);
 
         $setting = [

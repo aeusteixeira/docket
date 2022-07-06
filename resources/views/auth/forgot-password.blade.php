@@ -25,7 +25,7 @@
                     <small class="text-muted">
                         <span class="text-primary">
                             <i class="fas fa-user-shield"></i>
-                            <strong>BPO Innova</strong>
+                            <strong>{{ env('APP_NAME') }}</strong>
                         </span>
                     </small>
                   </p>

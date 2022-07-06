@@ -1,6 +1,7 @@
 <div>
 @if (isset($actions))
     @foreach ($actions as $action)
+
         @if ($action['label'] == 'Excluir')
 
             <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"

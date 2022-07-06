@@ -203,14 +203,21 @@
                     <!-- Nav item -->
                     <li class="nav-item">
                         <div class="navbar-heading">
-                            Seu Dcoket
+                            Seu Docket
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="{{ route('app.index', global_config('app_key')) }}">
+                        <a class="nav-link " href="{{ route('app.index', global_config('app_key')) }}" target="_blank">
                             <i data-feather="external-link" class="nav-icon icon-xs me-2">
                             </i>
                             Visualizar
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('dashboard.download-teams-app') }}" target="_blank">
+                            <i data-feather="download" class="nav-icon icon-xs me-2">
+                            </i>
+                            Download
                         </a>
                     </li>
                 </ul>
@@ -341,10 +348,10 @@
 
                                 <ul class="list-unstyled">
                                     <li>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="{{ route('dashboard.configurations.index') }}">
                                             <i class="me-2 icon-xxs dropdown-item-icon"
                                                 data-feather="settings"></i>
-                                                Configuações
+                                                Configurações
                                         </a>
                                     </li>
                                     <li>

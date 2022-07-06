@@ -34,7 +34,7 @@
 
     </style>
     <title>
-        {{ $company_name }} - Docket
+        {{ $company_name }} - {{ env('APP_NAME') }}
     </title>
 </head>
 

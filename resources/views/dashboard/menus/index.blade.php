@@ -51,7 +51,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($menus as $menu)
+                        @forelse ($menus as $menu)
                             <tr>
                                 <th scope="row px-0">
                                     {{ $menu->id }}
@@ -85,7 +85,15 @@
                                     ]" />
                                 </td>
                             </tr>
-                        @endforeach
+                            @empty
+                            <tr>
+                                <td colspan="5">
+                                    <div class="alert alert-info">
+                                        Nenhum registro encontrado.
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>

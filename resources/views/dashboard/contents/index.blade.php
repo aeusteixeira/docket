@@ -54,7 +54,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($contents as $content)
+                        @forelse ($contents as $content)
                             <tr>
                                 <th scope="row px-0">
                                     {{ $content->id }}
@@ -96,7 +96,15 @@
                                     ]" />
                                 </td>
                             </tr>
-                        @endforeach
+                            @empty
+                            <tr>
+                                <td colspan="6">
+                                    <div class="alert alert-info">
+                                        Nenhum registro encontrado.
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>

@@ -78,10 +78,12 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="3">
+                                <td colspan="4">
                                     <div class="alert alert-info">
                                         Nenhum registro encontrado.
                                     </div>
+                                </td>
+                            </tr>
                         @endforelse
                     </tbody>
                 </table>
